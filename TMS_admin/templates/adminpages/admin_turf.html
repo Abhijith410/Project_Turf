@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turfs</title>
+    <link href="{% static '/css/proj.css' %}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark" style=" background-color: #0a0a0a">
+          <a class="navbar-brand" href=""><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
+        </nav>
+    </div>
+  </header>  
+  <div class="welcome_user">
+    <nav class="navbar navbar-light">
+      <a class="navbar-brand">Hello Admin</a>
+      <form class="form-inline">
+        <div class="input-group mt-2 mb-2">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-user"></i> Abhijith
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="">Logout</a>
+            </div>
+          </div>
+        </div>   
+      </form>
+    </nav>
+  </div>
+  <div class="container-fluid turfmanage">
+    <div class="row">
+      <div class="col-md-2 sidebar1 ">
+        <h4>Admin Panel</h4>
+        <a href="">Dashboard</a>
+        <a href="">Turfs</a>
+        <a href="">Users</a>
+        <a href="">Managers</a>
+        <a href="">Turf Requests</a>
+        <a href="">Feedbacks</a>
+        <a href="">Logout</a>
+      </div>        
+      <div class="col-md-10 turfmanage1">
+        <div>
+          <a href=""><button class="btn btn-outline-primary my-2 my-sm-0 addbutton" type="submit">Add New Turf</button></a>
+        </div> 
+        <div>
+          <h3>Turfs</h3>
+          <br>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Cost(/hour)</th>
+                <th scope="col">Location</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td><img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/01/4d/ae.jpg" alt="" width="120px" height="100px"></td>
+                <td>Emirates</td>
+                <td>1000</td>
+                <td>Kannur</td>
+                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t1"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1"><i class="fa-sharp fa-solid fa-trash"></i></button>     
+                  <div class="modal fade" id="t1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                      <div class="modal-content confbutton">
+                        <div class="modal-header ">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">Emirates Turf</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/01/4d/ae.jpg" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1350,h_900,f_auto/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/qntrjacucilyylr4thni/ArsenalFCEmiratesStadiumTour-KlookIndia.jpg" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="https://cdn.images.express.co.uk/img/dynamic/67/590x/Arsenal-894787.jpg" class="d-block w-100" alt="...">
+                              </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Next</span>
+                            </button>
+                          </div>
+                            <br>
+                            <br>Location - Kannur
+                            <br>Sports Available - Football, Cricket
+                            <br>Per Hour cost is Rs 1000. Can extend depending upon the situation.
+                            <br>Fast food and beverage facility available.
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>              
+                </td>
+              </tr>
+              <!-- <tr>
+                <th scope="row">2</th>
+                <td><img src="https://pbs.twimg.com/media/FdlqvhUWQAAhmo0.jpg" alt="" width="120px" height="100px"></td>
+                <td>Wembley</td>
+                <td>1500</td>
+                <td>Payyanur</td>
+                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t2"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1"><i class="fa-sharp fa-solid fa-trash"></i></button>     
+                  <div class="modal fade" id="t2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content confbutton">
+                        <div class="modal-header ">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">Wembley Turf</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="https://pbs.twimg.com/media/FdlqvhUWQAAhmo0.jpg" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="https://www.flowcrete.eu/media/2508/wembley-stadium-05.jpg" class="d-block w-100" alt="...">
+                              </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls1" data-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-target="#carouselExampleControls1" data-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Next</span>
+                            </button>
+                          </div>
+                            <br>
+                            <br>Location - Payyanur
+                            <br>Sports Available - Football only
+                            <br>Per Hour cost is Rs 1500. Seating facilty available for non playing customers.
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>              
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td><img src="https://e0.365dm.com/20/03/1600x900/skysports-real-madrid-bernabeu_4945961.jpg?20200312114344" alt="" width="120px" height="100px"></td>
+                <td>Bernabeu</td>
+                <td>2000</td>
+                <td>Thalassery</td>
+                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t3"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1"><i class="fa-sharp fa-solid fa-trash"></i></button>     
+                  <div class="modal fade" id="t3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content confbutton">
+                        <div class="modal-header ">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">Bernabeu Turf</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div id="carouselExampleControls2" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="https://e0.365dm.com/20/03/1600x900/skysports-real-madrid-bernabeu_4945961.jpg?20200312114344" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="https://imgresizer.eurosport.com/unsafe/2560x0/filters:format(jpeg)/origin-imgresizer.eurosport.com/2020/03/26/2799605-57757110-2560-1440.jpg" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="https://images.indianexpress.com/2019/04/bernabeu-759.jpg" class="d-block w-100" alt="...">
+                              </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls2" data-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-target="#carouselExampleControls2" data-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Next</span>
+                            </button>
+                          </div>
+                            <br>
+                            <br>Location - Thalassery
+                            <br>Sports Available - Football, Cricket, Hockey
+                            <br>Per Hour cost is Rs 2000.
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>              
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td><img src="https://img.fcbayern.com/image/upload/v1601458426/cms/public/images/allianz-arena/stadion-innenraum/aa_haupttribuene.jpg" alt="" width="120px" height="100px"></td>
+                <td>Allianz Arena</td>
+                <td>1200</td>
+                <td>Iritty</td>
+                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t4"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1"><i class="fa-sharp fa-solid fa-trash"></i></button>     
+                  <div class="modal fade" id="t4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content confbutton">
+                        <div class="modal-header ">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">Confirm Booking</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div id="carouselExampleControls3" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="https://img.fcbayern.com/image/upload/v1601458426/cms/public/images/allianz-arena/stadion-innenraum/aa_haupttribuene.jpg" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="https://images.hindustantimes.com/img/2021/06/04/550x309/1df93134df2b46baa6a4e8bd9bf12ce6-1df93134df2b46baa6a4e8bd9bf12ce6-0_1622812730829_1622812758294.jpg" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="https://img.fcbayern.com/image/upload/t_cms-16x9/f_auto/cms/public/images/allianz-arena/stadion-innenraum/aa_flutlicht.jpg" class="d-block w-100" alt="...">
+                              </div>
+                            </div>
+                           <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls3" data-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-target="#carouselExampleControls3" data-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Next</span>
+                            </button>
+                          </div>
+                          <br>
+                          <br>Location - Iritty
+                          <br>Sports Available - Football, Cricket, Rugby
+                          <br>Per Hour cost is Rs 1200. Near to the bus stand and easy to locate.
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>              
+                </td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>  
+  </div>
+  <div class="container-">
+    <footer class="text-center text-lg-start text-white" style="background:linear-gradient(to right, #568EE3, #B368ED);">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2022 Copyright:
+        <a class="text-white" href="#">Amalgamation.com</a>
+      </div>
+    </footer>
+  </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link href="{% static '/css/proj.css' %}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+    <header>
+      <div class="container-fluid amg">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <a class="navbar-brand" href="{% url 'appadmin:homepage' %}"><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="40" height="50"><b> Amalgamation</b></a>
+        </nav>
+      </div>   
+    </header>  
+    <div class="container- col-md-12 col-sm-12 turf_request">
+      <h4>Do you own a turf ? Get registered with Amalgamation</h4>
+      <p>Fill in the details below and we will contact you after verification</p>
+      <br><br><br>
+      <div class="request_form">
+        <form action="" method="post">
+          {% csrf_token %}
+          <input type="text" name="treqname" class="form-control" id="requestname" placeholder="Name">
+          <span class="requesterror" id="rname"></span><br>
+          <input type="email" name="treqmail" class="form-control" id="requestmail" placeholder="E-mail">
+          <span class="requesterror" id="rmail"></span><br>
+          <input type="tel" name="treqnumber" class="form-control" id="requestnumber" placeholder="Contact Number">
+          <span class="requesterror" id="rnumber"></span><br>
+          <input type="text" name="treqturfname" class="form-control" id="requestturf" placeholder="Turf Name">
+          <span class="requesterror" id="rturf"></span><br>
+          <input type="text" name="treqturfloc" class="form-control" id="requestlocation" placeholder="Turf Location">
+          <span class="requesterror" id="rlocation"></span><br>
+          <input type="text" name="treqmngrid" class="form-control" id="requestid" placeholder="Username">
+          <span class="requesterror" id="rid"></span><br>
+          <input type="password" name="treqmngrpass" class="form-control" id="requestpass" placeholder="Passsword">
+          <span class="requesterror" id="rpass"></span><br>
+          <button onclick="return trequest()" class="btn requestbutton" type="submit">Submit</button>
+          <span class="success" id="success"></span><br>
+          <p>{{req}}</p>
+        </form>
+      </div>
+    </div>  
+    <div class="container- my-3">
+      <footer class="text-center text-lg-start text-white" style="background:linear-gradient(to right, #568EE3, #B368ED);">
+        <div class="container p-4 pb-0">
+          <section class="">
+            <div class="row">
+              <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">
+                 About Us
+                </h6>
+                <p style="font-family: Arial, Helvetica, sans-serif;">
+                We are one of the leading online turf booking platform based in Kerala.
+                Choose the turf of your choice and enjoy the time with your friends - We can make it simple for you.
+                So join us and have the blast!!! 
+                </p>
+              </div>
+              <hr class="w-100 clearfix d-md-none" />
+              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Quick Links</h6>
+                  <p class="Footers">
+                    <a class="text-white" href="">Home</a>
+                  </p>
+                  <p>
+                    <a class="text-white" href="">Login</a>
+                  </p>
+                  <p>
+                    <a class="text-white">Book Now</a>
+                  </p>
+              </div>
+                <hr class="w-100 clearfix d-md-none" />
+                <hr class="w-100 clearfix d-md-none" />
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                  <h6 class="text-uppercase mb-4 font-weight-bold">Contact Us</h6>
+                    <p><i class="fas fa-pen mr-3"></i> Amalgamation</p>
+                    <p><i class="fas fa-home mr-3"></i> Taliparamba, Kannur, Kerala</p>
+                    <p><i class="fas fa-envelope mr-3"></i> amalg@gmail.com</p>
+                    <p><i class="fas fa-phone mr-3"></i> + 7012 39 1939</p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                  <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
+      
+                  <a
+                     class="btn btn-primary btn-floating m-1"
+                     style="background-color: #3b5998"
+                     href="#!"
+                     role="button">
+                     <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a
+                     class="btn btn-primary btn-floating m-1"
+                     style="background-color: #55acee"
+                     href="#!"
+                     role="button">
+                     <i class="fab fa-twitter"></i>
+                  </a>
+                  <a
+                     class="btn btn-primary btn-floating m-1"
+                     style="background-color: #dd4b39"
+                     href="#!"
+                     role="button">
+                     <i class="fab fa-google"></i>
+                  </a>
+                  <a
+                     class="btn btn-primary btn-floating m-1"
+                     style="background-color: #ac2bac"
+                     href="#!"
+                     role="button">
+                     <i class="fab fa-instagram"></i>
+                  </a>
+                  <a
+                     class="btn btn-primary btn-floating m-1"
+                     style="background-color: #0082ca"
+                     href="#!"
+                     role="button">
+                     <i class="fab fa-linkedin-in"></i>
+                  </a>
+                </div>
+            </div>
+          </section>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+          © 2022 Copyright:
+           <a class="text-white" href="#">Amalgamation.com</a>
+        </div>
+      </footer>
+    </div>
+   
+    <script src="{% static '/javascript/trequest.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>

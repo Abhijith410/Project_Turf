@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedbacks</title>
+    <link href="{% static '/css/proj.css' %}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark" style=" background-color: #0a0a0a">
+          <a class="navbar-brand" href=""><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
+        </nav>
+    </div>
+  </header>  
+  <div class="welcome_user">
+    <nav class="navbar navbar-light">
+      <a class="navbar-brand">Hello Admin</a>
+      <form class="form-inline">
+        <div class="input-group mt-2 mb-2">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-user"></i> Abhijith
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="">Logout</a>
+            </div>
+          </div>
+        </div>   
+      </form>
+    </nav>
+  </div>
+  <div class="container-fluid feedback">
+    <div class="row">
+      <div class="col-md-2 sm-2 sidebar ">
+        <h4>Admin Panel</h4>
+        <a href="">Dashboard</a>
+        <a href="">Turfs</a>
+        <a href="">Users</a>
+        <a href="">Managers</a>
+        <a href="">Turf Requests</a>
+        <a href="">Feedbacks</a>
+        <a href="">Logout</a>
+      </div>
+      <div class="col-md-10 sm-10 feedback1">
+        <h4>User Feedbacks</h4>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">E-mail</th>
+              <th scope="col">Message</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><button type="button" class="btn btn-primary"><i class="fa-sharp fa-solid fa-trash"></i></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>  
+  </div>
+  <div class="container-">
+    <footer class="text-center text-lg-start text-white" style="background:linear-gradient(to right, #568EE3, #B368ED);">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2022 Copyright:
+        <a class="text-white" href="#">Amalgamation.com</a>
+      </div>
+    </footer>
+  </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>
