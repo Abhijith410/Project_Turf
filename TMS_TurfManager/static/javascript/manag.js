@@ -17,7 +17,6 @@ var manturfimg_error= document.getElementById('Manturfimg')
             var turfloc1 = document.getElementById('turfloc').value;
             var turfcost1 = document.getElementById('turfcost').value;
             var file1 = document.getElementById('file').value;
-			// var filePath = file1.value;
     
             if(turfname1 == ""){
                 Manturfname_error.innerHTML = "Please enter Turf name";
@@ -55,20 +54,12 @@ var manturfimg_error= document.getElementById('Manturfimg')
 
 
             if(turfcost1 == ""){
-                Manturfcost_error.innerHTML = "Please enter Turf cost";
+                Manturfcost_error.innerHTML = "Please enter Turf Description";
                 document.getElementById('turfcost').style.borderColor = "red";
                 mgedit3 = 0;
             }
             else{
-                var regex = /^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/;
-                if(regex.test(turfcost1) === false){
-                    document.getElementById('turfcost').style.borderColor = "red";
-                    Manturfcost_error.innerHTML = "Please enter precise cost";
-                    mgedit3 = 0; 
-                }
-                else{
                     mgedit3 = 1;
-                }
             }
 
 			if(file1 == null){

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Turf</title>
-    <link href="{% static '/css/proj.css' %}" rel="stylesheet"/>
+    <link href="{% static '/css/proj2.css' %}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -14,17 +14,17 @@
   <header>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark" style=" background-color: #0a0a0a">
-          <a class="navbar-brand" href=""><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
+          <a class="navbar-brand" href="{% url 'appadmin:homepage' %}"><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
         </nav>
     </div>
   </header>  
   <div class="welcome_user">
     <nav class="navbar navbar-light">
-      <a class="navbar-brand">Hello Manager</a>
+      <a class="navbar-brand">Hello {{manager_data.man_name}}</a>
       <form class="form-inline">
-        <li><a href="">Home</a></li>
-        <li><a href="">Dashboard </a></li>
-        <a href=""><button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button></a>
+        <li><a href="{% url 'appadmin:homepage' %}">Home</a></li>
+        <li><a href="{% url 'manager:mhomepage' %}">Dashboard </a></li>
+        <a href="{% url 'appadmin:managerlogout' %}"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button></a>
       </form>
     </nav>
   </div>
@@ -40,13 +40,13 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="https://e0.365dm.com/20/03/1600x900/skysports-real-madrid-bernabeu_4945961.jpg?20200312114344" alt="First slide">
+              <img class="d-block w-100" src="" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="https://imgresizer.eurosport.com/unsafe/2560x0/filters:format(jpeg)/origin-imgresizer.eurosport.com/2020/03/26/2799605-57757110-2560-1440.jpg" alt="Second slide">
+              <img class="d-block w-100" src="" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="https://images.indianexpress.com/2019/04/bernabeu-759.jpg" alt="Third slide">
+              <img class="d-block w-100" src="" alt="Third slide">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -60,12 +60,12 @@
         </div>
       </div>
       <div class="col-md-6 sm-6 xl-6 request1">
-        <a class="edit_viewturf" href=""><u>Edit Details</u></a>
+        <a class="edit_viewturf" href="{% url 'manager:mturfedit' manager_data.id %}"><u>Edit Details</u></a>
         <br><br>
-        <h3>Bernabeu Turf</h3> 
-        <p>Location: Thalassery</p>
-        <p>Sports Available : Football, Cricket, Hockey</p>
-        <p>Per Hour Cost: Rs 2000.</p>
+        <h3>{{manager_data.man_turfname}} Turf</h3> 
+        <p>Location: {{manager_data.man_turfloc}}</p>
+        <p>{{manager_data.turf_desc}}</p>
+        <p></p>
         <br><br><br><br>        
       </div>
     </div>  

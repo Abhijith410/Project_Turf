@@ -28,7 +28,7 @@
               <i class="fa fa-user"></i> Abhijith
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="">Logout</a>
+              <a class="dropdown-item" href="{% url 'appadmin:admlogout' %}">Logout</a>
             </div>
           </div>
         </div>   
@@ -39,59 +39,59 @@
     <div class="row">
       <div class="col-md-2 sm-2 xs-2 sidebar ">
         <h4>Admin Panel</h4>
-        <a href="">Dashboard</a>
-        <a href="">Turfs</a>
-        <a href="">Users</a>
-        <a href="">Managers</a>
-        <a href="">Turf Requests</a>
-        <a href="">Feedbacks</a>
-        <a href="">Logout</a>
+        <a href="{% url 'appadmin:admhome' %}">Dashboard</a>
+        <a href="{% url 'appadmin:admturfs' %}">Turfs</a>
+        <a href="{% url 'appadmin:admusers' %}">Users</a>
+        <a href="{% url 'appadmin:admmanagers' %}">Managers</a>
+        <a href="{% url 'appadmin:admrequests' %}">Turf Requests</a>
+        <a href="{% url 'appadmin:admfeedback' %}">Feedbacks</a>
+        <a href="{% url 'appadmin:admlogout' %}">Logout</a>
       </div>       
       <div class="col-sm-10 col-md-10 col-xs-10 addturf1">
-        <form action="" method="post">
+        <form action="{% url 'appadmin:admaddmngr' mng.id %}" method="post">
           {% csrf_token %}
           <div class="heading1">
             <h1>Add Manager Details</h1><br>
           </div>
           <div class="form-group">
             <label for="">Manager Name</label>
-            <input type="text" name="mngrname" id="mgname" placeholder=""><br>
+            <input type="text" name="mngrname" value="{{mng.man_name}}" id="mgname" placeholder=""><br>
             <span class="adderror" id="admgmanagername"></span><br>
           </div>
           <div class="form-group">
             <label for="">Contact Number</label>
-            <input type="tel" name="mngrcontact" id="mgphone" placeholder=""><br>
+            <input type="tel" name="mngrcontact" value="{{mng.man_contact}}" id="mgphone" placeholder=""><br>
             <span class="adderror" id="admgmanagerphone"></span><br>
           </div>
           <div class="form-group">
             <label for="">E-mail</label>
-            <input type="email" name="mngrmail" id="mgmail" placeholder=""><br>
+            <input type="email" name="mngrmail" value="{{mng.man_email}}" id="mgmail" placeholder=""><br>
             <span class="adderror" id="admgmanagermail"></span><br>
           </div>
           <div class="form-group">
             <label for="">Turf Assigned</label>
-            <input type="text" name="mngrturf" id="mgturfname" placeholder=""><br>
+            <input type="text" name="mngrturf" value="{{mng.man_turfname}}" id="mgturfname" placeholder=""><br>
             <span class="adderror" id="admgturfname"></span><br>
           </div>
           <div class="form-group">
             <label for="">Turf Location</label>
-            <input type="text" name="mngrturfloc" id="mgturfloc" placeholder=""><br>
+            <input type="text" name="mngrturfloc" value="{{mng.man_turfloc}}" id="mgturfloc" placeholder=""><br>
             <span class="adderror" id="admgturfloc"></span><br>
           </div>
           <div class="form-group">
             <label for="">Username</label>
-            <input type="text" name="mngrid" id="mgid" placeholder=""><br>
+            <input type="text" name="mngrid" value="{{mng.man_username}}" id="mgid" placeholder=""><br>
             <span class="adderror" id="admgmanagerid"></span><br>
           </div>
           <div class="form-group">
             <label for="">Password</label>
-            <input type="password" name="mngrpass" id="mgpassword" placeholder=""><br>
+            <input type="password" name="mngrpass" value="{{mng.man_password}}" id="mgpassword" placeholder=""><br>
             <span class="adderror" id="admgmanagerpass"></span><br>
           </div>
           <div class="form-group">
-            <button onclick="return addmanager()" type="button" class="btn btn-block submit">Submit</button>
+            <button type="submit" class="btn btn-block submit">Add Manager</button>
           </div>   
-          <br><p>{{dis}}</p> 
+          <br><p>{{add}}</p> 
         </form>
       </div> 
     </div>    

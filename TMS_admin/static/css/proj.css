@@ -129,6 +129,11 @@ header{
   border-color: rgb(56, 2, 59);
 }
 
+.login .login2 form p{
+  text-align: center;
+  color: red;
+}
+
 .registration-form .social-media{
   max-width: 600px;
   background-color: #fff;
@@ -829,7 +834,7 @@ bottom: 6px;
 .addturf1 .submit{
   float: right;
   margin-bottom: 20px;
-  width: 100px;
+  width: 200px;
   border-radius: 30px;
   font-size: 18px;
   font-weight: bold;
@@ -1060,7 +1065,7 @@ bottom: 6px;
 }
 
 .managerhome{
-  background-image: url("{% static '/images/managerhome.jpg' %}");
+  background-image: url(https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg?cs=srgb&dl=pexels-jonathan-petersson-399187.jpg&fm=jpg);
   width: 100%;
   height: 100%;
   background-size: contain;

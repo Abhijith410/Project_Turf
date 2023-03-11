@@ -1018,7 +1018,7 @@ bottom: 6px;
 }
 
 .editturf1 .form-group span{
-  position: relative;
+  position: absolute;
   float: right;
   font-size: 14px;
   color: rgb(255, 0, 0);

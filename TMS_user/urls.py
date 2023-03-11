@@ -9,5 +9,5 @@ urlpatterns = [
     path('UserBookings/', views.Userbookings, name = "ubookings"),
     path('UserPayment/', views.Userpayment, name = "upayment"),
     path('UserFeedback/', views.Userfeedback, name = "ufeedback"),
-    path('UserEditprofile/', views.Usereditprofile, name = "ueditprofile"),
+    path('UserEditprofile/<int:edit_id>', views.Usereditprofile, name = "ueditprofile"),
 ]

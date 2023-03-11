@@ -14,7 +14,7 @@
   <header>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark" style=" background-color: #0a0a0a">
-          <a class="navbar-brand" href=""><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
+          <a class="navbar-brand" href="{% url 'appadmin:homepage' %}"><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
         </nav>
     </div>
   </header>  
@@ -28,7 +28,7 @@
               <i class="fa fa-user"></i> Abhijith
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="">Logout</a>
+              <a class="dropdown-item" href="{% url 'appadmin:admlogout' %}">Logout</a>
             </div>
           </div>
         </div>   
@@ -39,22 +39,22 @@
     <div class="row">
       <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 sidebar ">
         <h4>Admin Panel</h4>
-        <a href="">Dashboard</a>
-        <a href="">Turfs</a>
-        <a href="">Users</a>
-        <a href="">Managers</a>
-        <a href="">Turf Requests</a>
-        <a href="">Feedbacks</a>
-        <a href="">Logout</a>
+        <a href="{% url 'appadmin:admhome' %}">Dashboard</a>
+        <a href="{% url 'appadmin:admturfs' %}">Turfs</a>
+        <a href="{% url 'appadmin:admusers' %}">Users</a>
+        <a href="{% url 'appadmin:admmanagers' %}">Managers</a>
+        <a href="{% url 'appadmin:admrequests' %}">Turf Requests</a>
+        <a href="{% url 'appadmin:admfeedback' %}">Feedbacks</a>
+        <a href="{% url 'appadmin:admlogout' %}">Logout</a>
       </div>
       <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12 admin_cont">
         <ul>
-          <li><a href="">Turf Management</a></li>
-          <li><a href="">Users</a></li>
-          <li><a href="">Managers</a></li>
-          <li><a href="">Turf Requests</a></li>
-          <li><a href="">Feedbacks</a></li>
-          <li><a href="">Logout</a></li>
+          <li><a href="{% url 'appadmin:admturfs' %}">Turf Management</a></li>
+          <li><a href="{% url 'appadmin:admusers' %}">Users</a></li>
+          <li><a href="{% url 'appadmin:admmanagers' %}">Managers</a></li>
+          <li><a href="{% url 'appadmin:admrequests' %}">Turf Requests</a></li>
+          <li><a href="{% url 'appadmin:admfeedback' %}">Feedbacks</a></li>
+          <li><a href="{% url 'appadmin:admlogout' %}">Logout</a></li>
         </ul>
       </div>
     </div>  

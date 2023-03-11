@@ -115,7 +115,7 @@ var rpass_error= document.getElementById('rpass');
                 var regex = /^[A-Za-z0-9_]{5,29}$/;
                 if(regex.test(requestid1) === false) {
                     document.getElementById('requestid').style.borderColor = "red";
-                    rid_error.innerHTML = "Please enter proper Manager ID";
+                    rid_error.innerHTML = "Please enter a proper username";
                     treq6 = 0;
                 } 
                 else {
@@ -124,7 +124,7 @@ var rpass_error= document.getElementById('rpass');
             }
 
             if(requestpass1 == ""){
-                rpass_error.innerHTML = "Please enter a Password (min 6 characters - use letters,numbers and special charatcters)";
+                rpass_error.innerHTML = "Please enter a Password (min 6 characters - use letters,numbers and special characters)";
                 document.getElementById('requestpass').style.borderColor = "red";
                 treq7 = 0;
             }

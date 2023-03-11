@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manager Home</title>
-    <link href="{% static '/css/proj.css' %}" rel="stylesheet"/>
+    <link href="{% static '/css/proj2.css' %}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -20,11 +20,11 @@
   </header>  
   <div class="welcome_user">
     <nav class="navbar navbar-light">
-      <a class="navbar-brand">Hello Manager</a>
+      <a class="navbar-brand">Hello {{manager_data.man_name}}</a>
       <form class="form-inline">
         <li><a href="{% url 'appadmin:homepage' %}">Home</a></li>
-        <li><a href="">Dashboard </a></li>
-        <a href=""><button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button></a>
+        <li><a href="{% url 'manager:mhomepage' %}">Dashboard </a></li>
+        <a href="{% url 'appadmin:managerlogout' %}"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button></a>
       </form>
     </nav>
   </div>
@@ -33,12 +33,12 @@
       <div class="col-md-12 manager_home">
         <ul>
           <li><a href="{% url 'appadmin:homepage' %}">Home</a></li>
-          <li><a href="">My Turf</a></li>
-          <li><a href="">Confirm Bookings</a></li>
-          <li><a href="">Booking History</a></li>
-          <li><a href="">Turf Reviews</a></li>
-          <li><a href="">Edit Profile</a></li>
-          <li><a href="">Logout</a></li>
+          <li><a href="{% url 'manager:mturf' %}">My Turf</a></li>
+          <li><a href="{% url 'manager:mbookconfirm' %}">Confirm Bookings</a></li>
+          <li><a href="{% url 'manager:mbookhistory' %}">Booking History</a></li>
+          <li><a href="{% url 'manager:mturfreview' %}">Turf Reviews</a></li>
+          <li><a href="{% url 'manager:meditprofile' manager_data.id %}">Edit Profile</a></li>
+          <li><a href="{% url 'appadmin:managerlogout' %}">Logout</a></li>
         </ul>
       </div>
     </div>  

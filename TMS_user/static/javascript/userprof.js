@@ -67,19 +67,12 @@ var usernewpass_error= document.getElementById('usernewpass');
             }
 
             if(uoldpass1 == ""){
-                useroldpass_error.innerHTML = "Please enter old password";
+                useroldpass_error.innerHTML = "Please enter your username";
                 document.getElementById('uoldpass').style.borderColor = "red";
                 uspr4 = 0;
             }
             else{
-                if(uoldpass1 !== 'oldpass'){
-                    document.getElementById('uoldpass').style.borderColor = "red";
-                    useroldpass_error.innerHTML = "Please check old password again";
-                    uspr4 = 0; 
-                }
-                else{
                     uspr4 = 1;
-                }
             }
 
             if(unewpass1 == ""){

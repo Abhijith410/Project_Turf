@@ -58,20 +58,20 @@
                 <div class="form-group">
                     <button name="signup" onclick="return reg_validate()" type="submit" class="btn btn-block create-account">Sign Up</button>
                 </div>
-                <p>{{reg}}</p><br>
+                <p style="color: green;">{{reg}}</p><br>
             </form>
             <div class="social-media">
-                <h5><a href="{% url 'appadmin:login' %}">Sign in</a></h5><br>
                 <h5>Sign up with social media</h5>
                 <div class="social-icons">
                     <a href="#"><i class="icon-social-facebook" title="Facebook"></i></a>
                     <a href="#"><i class="icon-social-google" title="Google"></i></a>
                     <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
                 </div>
+                <h5><a href="{% url 'appadmin:loginuser' %}">Go to Sign in</a></h5><br>
             </div>
         </div>
     </div>    
 
-    <script src="{% static '/javascript/signup.js' %}"></script>
+    <script src="{% static '/javascript/signup1.js' %}"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Turfs</title>
-    <link href="{% static '/css/proj.css' %}" rel="stylesheet"/>
+    <link href="{% static '/css/proj3.css' %}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
@@ -15,21 +15,22 @@
   <header>
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg navbar-dark" style=" background-color: #0a0a0a">
-        <a class="navbar-brand" href=""><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
+        <a class="navbar-brand" href="{% url 'appadmin:homepage' %}"><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
       </nav>
     </div>
   </header>  
   <div class="welcome_user">
     <nav class="navbar navbar-light">
-      <a class="navbar-brand">Hello User</a>
+      <a class="navbar-brand">Hello {{user.user_name}}</a>
       <form class="form-inline">
-        <li><a href="">Home</a></li>
-        <li><a href="">Dashboard </a></li>
-        <a href=""><button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button></a>
+        <li><a href="{% url 'appadmin:homepage' %}">Home</a></li>
+        <li><a href="{% url 'user:uhomepage' %}">Dashboard </a></li>
+        <a href="{% url 'appadmin:userlogout' %}"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button></a>
       </form>
     </nav>
   </div>
   <div class="container-fluid turfdetails">
+    {% for turf_ in turf %}
     <div class="container col-lg-6 col-md-6 col-sm-12 p-0 searchbar">
       <div class=" locationsearch">
         <label for=""><b>Search by Location: </b></label>
@@ -52,16 +53,16 @@
         <div class="card">
           <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/01/4d/ae.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Emirates Turf</h5>
-            <p class="card-text">Location: Kannur <br>Cost per Hour: Rs 1000</p>
-            <a href="user_confbook.html"><button type="button" class="btn btn book">Book Now</button></a>
+            <h4 class="card-title">{{turf_.man_turfname}} Turf</h4>
+            <p class="card-text">Location: {{turf_.man_turfloc}} </p> <br>
+            <a href="{% url 'user:uconfirmturf' %}"><button type="button" class="btn btn book">Book Now</button></a>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t1"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#r1">Review</button>
               <div class="modal fade" id="t1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                   <div class="modal-content confbutton">
                     <div class="modal-header ">
-                      <h5 class="modal-title" id="exampleModalCenterTitle">Emirates Turf</h5>
+                      <h5 class="modal-title" id="exampleModalCenterTitle">{{turf_.man_turfname}} Turf</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -70,13 +71,13 @@
                       <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                           <div class="carousel-item active">
-                            <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/01/4d/ae.jpg" class="d-block w-100" alt="...">
+                            <img src="" class="d-block w-100" alt="...">
                           </div>
                           <div class="carousel-item">
-                            <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1350,h_900,f_auto/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/qntrjacucilyylr4thni/ArsenalFCEmiratesStadiumTour-KlookIndia.jpg" class="d-block w-100" alt="...">
+                            <img src="" class="d-block w-100" alt="...">
                           </div>
                           <div class="carousel-item">
-                            <img src="https://cdn.images.express.co.uk/img/dynamic/67/590x/Arsenal-894787.jpg" class="d-block w-100" alt="...">
+                            <img src="" class="d-block w-100" alt="...">
                           </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls1" data-slide="prev">
@@ -89,17 +90,15 @@
                         </button>
                       </div>
                       <br>
-                      <br>Location - Kannur
-                      <br>Sports Available - Football, Cricket
-                      <br>Per Hour cost is Rs 1000. Can extend depending upon the situation.
-                      <br>Fast food and beverage facility available.
+                      <br>Location - {{turf_.man_turfloc}}
+                      <br>{{turf_.turf_desc}} <br>
                       <br>------------------------------------------------------------
                       <br><u><b>Reviews</b></u><br>
-                      <br>Mike - "a good turf with nice facilities" 
-                      <br>Jordan - "just average quality"
+                      <br>
+                      <br>
                     </div>
                     <div class="modal-footer">
-                      <a href="user_confbook.html"><button type="button" class="btn btn book">Book Now</button></a>
+                      <a href="{% url 'user:uconfirmturf' %}"><button type="button" class="btn btn book">Book Now</button></a>
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                   </div>
@@ -117,10 +116,6 @@
                     <div class="modal-body">
                     <form>
                       <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Rating</label>
-                        <input type="text" class="form-control" id="recipient-name">
-                      </div>
-                      <div class="form-group">
                         <label for="message-text" class="col-form-label">Message:</label>
                         <textarea class="form-control" id="message-text"></textarea>
                       </div>
@@ -136,13 +131,13 @@
           </div>
         </div>
       </div>
-      <div class="col mb-4">
+      <!-- <div class="col mb-4">
         <div class="card">
           <img src="https://pbs.twimg.com/media/FdlqvhUWQAAhmo0.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Wembley Turf</h5>
             <p class="card-text">Location: Payyanur <br>Cost per Hour: Rs 1500</p>
-            <a href="user_confbook.html"><button type="button" class="btn btn book">Book Now</button></a>
+            <a href="{% url 'user:uconfirmturf' %}"><button type="button" class="btn btn book">Book Now</button></a>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t2"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#r2">Review</button>
             <div class="modal fade" id="t2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -181,7 +176,7 @@
                     <br><u><b>Reviews</b></u><br>
                   </div>
                   <div class="modal-footer">
-                    <a href="user_confbook.html"><button type="button" class="btn btn book">Book Now</button></a>
+                    <a href="{% url 'user:uconfirmturf' %}"><button type="button" class="btn btn book">Book Now</button></a>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   </div>
                 </div>
@@ -233,14 +228,14 @@
             </div>     
           </div>
         </div>
-      </div>
-      <div class="col mb-4">
+      </div> -->
+      <!-- <div class="col mb-4">
         <div class="card">
           <img src="https://e0.365dm.com/20/03/1600x900/skysports-real-madrid-bernabeu_4945961.jpg?20200312114344" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Bernabeu Turf</h5>
             <p class="card-text">Location: Thalassery <br>Cost per Hour: Rs 2000</p>
-            <a href="user_confbook.html"><button type="button" class="btn btn book">Book Now</button></a>
+            <a href="{% url 'user:uconfirmturf' %}"><button type="button" class="btn btn book">Book Now</button></a>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t3"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#r3">Review</button>
             <div class="modal fade" id="t3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -285,7 +280,7 @@
                     <br>Henry - "good one"
                   </div>
                   <div class="modal-footer">
-                    <a href="user_confbook.html"><button type="button" class="btn btn book">Book Now</button></a>
+                    <a href="{% url 'user:uconfirmturf' %}"><button type="button" class="btn btn book">Book Now</button></a>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   </div>
                 </div>
@@ -337,14 +332,14 @@
             </div>  
           </div>
         </div>
-      </div>
-      <div class="col mb-4">
+      </div> -->
+      <!-- <div class="col mb-4">
         <div class="card">
           <img src="https://img.fcbayern.com/image/upload/v1601458426/cms/public/images/allianz-arena/stadion-innenraum/aa_haupttribuene.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Allianz Arena</h5>
             <p class="card-text">Location: Iritty <br>Cost per Hour: Rs 1200</p>
-            <a href="user_confbook.html"><button type="button" class="btn btn book">Book Now</button></a>
+            <a href="{% url 'user:uconfirmturf' %}"><button type="button" class="btn btn book">Book Now</button></a>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t4"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#r4">Review</button>
             <div class="modal fade" id="t4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -386,7 +381,7 @@
                     <br><u><b>Reviews</b></u><br>
                   </div>
                   <div class="modal-footer">
-                    <a href="user_confbook.html"><button type="button" class="btn btn book">Book Now</button></a>
+                    <a href="{% url 'user:uconfirmturf' %}"><button type="button" class="btn btn book">Book Now</button></a>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   </div>
                 </div>
@@ -438,8 +433,9 @@
             </div>      
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
+    {% endfor %}
   </div>
   <div class="container- my-3">
     <footer class="text-center text-lg-start text-white" style="background:linear-gradient(to right, #568EE3, #B368ED);">

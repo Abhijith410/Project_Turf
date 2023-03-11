@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turf Reviews</title>
-    <link href="{% static '/css/proj.css' %}" rel="stylesheet"/>
+    <link href="{% static '/css/proj2.css' %}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
@@ -14,17 +14,17 @@
   <header>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark" style=" background-color: #0a0a0a">
-          <a class="navbar-brand" href=""><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
+          <a class="navbar-brand" href="{% url 'appadmin:homepage' %}"><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
         </nav>
     </div>
   </header>  
   <div class="welcome_user">
     <nav class="navbar navbar-light">
-      <a class="navbar-brand">Hello Manager</a>
+      <a class="navbar-brand">Hello {{manager_data.man_name}}</a>
       <form class="form-inline">
-        <li><a href="">Home</a></li>
-        <li><a href="">Dashboard </a></li>
-        <a href=""><button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button></a>
+        <li><a href="{% url 'appadmin:homepage' %}">Home</a></li>
+        <li><a href="{% url 'manager:mhomepage' %}">Dashboard </a></li>
+        <a href="{% url 'appadmin:managerlogout' %}"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button></a>
       </form>
     </nav>
   </div>
@@ -39,7 +39,6 @@
               <th scope="col">Name</th>
               <th scope="col">Contact Number</th>
               <th scope="col">Message</th>
-              <th scope="col">Rating</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -49,23 +48,6 @@
               <td>Alan</td>
               <td>9998887775</td>
               <td>"A great experience"</td>
-              <td></td>
-              <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#"><i class="fa-sharp fa-solid fa-trash"></i></button></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Smith</td>
-              <td>7788665544</td>
-              <td>"Liked the playing turf. Services could have been better"</td>
-              <td></td>
-              <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#"><i class="fa-sharp fa-solid fa-trash"></i></button></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Henry</td>
-              <td>8976546765</td>
-              <td>"good one"</td>
-              <td></td>
               <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#"><i class="fa-sharp fa-solid fa-trash"></i></button></td>
             </tr>
           </tbody>

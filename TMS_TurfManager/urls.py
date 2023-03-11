@@ -8,6 +8,6 @@ urlpatterns = [
     path('ManagerConfirm/', views.Managerconfirm, name = "mbookconfirm"),
     path('ManagerBookings/', views.Managerbookings, name = "mbookhistory"),
     path('ManagerReviews/', views.Managerreviews, name = "mturfreview"),
-    path('ManagerEditturf/', views.Managereditturf, name = "mturfedit"),
-    path('ManagerEditprofile/', views.Managereditprofile, name = "meditprofile"),
+    path('ManagerEditturf/<int:turf_id>', views.Managereditturf, name = "mturfedit"),
+    path('ManagerEditprofile/<int:edit_id>', views.Managereditprofile, name = "meditprofile"),
 ]
