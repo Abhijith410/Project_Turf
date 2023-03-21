@@ -6,7 +6,7 @@ var loadFile = function(event) {
 var Manturfname_error= document.getElementById('Manturfname');
 var Manturfloc_error= document.getElementById('Manturfloc');
 var Manturfcost_error= document.getElementById('Manturfcost');
-var manturfimg_error= document.getElementById('Manturfimg')
+var manturfdesc_error= document.getElementById('Manturfdesc')
 
         mgedit1 = 1;
         mgedit2 = 1;
@@ -16,7 +16,7 @@ var manturfimg_error= document.getElementById('Manturfimg')
             var turfname1 = document.getElementById('turfname').value;
             var turfloc1 = document.getElementById('turfloc').value;
             var turfcost1 = document.getElementById('turfcost').value;
-            var file1 = document.getElementById('file').value;
+            var turfdesc1 = document.getElementById('turfdesc').value;
     
             if(turfname1 == ""){
                 Manturfname_error.innerHTML = "Please enter Turf name";
@@ -52,9 +52,8 @@ var manturfimg_error= document.getElementById('Manturfimg')
                 }
             }
 
-
             if(turfcost1 == ""){
-                Manturfcost_error.innerHTML = "Please enter Turf Description";
+                Manturfcost_error.innerHTML = "Please enter Turf Cost";
                 document.getElementById('turfcost').style.borderColor = "red";
                 mgedit3 = 0;
             }
@@ -62,13 +61,14 @@ var manturfimg_error= document.getElementById('Manturfimg')
                     mgedit3 = 1;
             }
 
-			if(file1 == null){
-                Manturfimg_error.innerHTML = "Please Select an image";
+            if(turfdesc1 == ""){
+                Manturfcost_error.innerHTML = "Please enter Turf Description";
+                document.getElementById('turfdesc').style.borderColor = "red";
                 mgedit4 = 0;
             }
-			else{
-				mgedit4 = 1;
-			}
+            else{
+                    mgedit4 = 1;
+            }
             
             if(mgedit1 === 1 && mgedit2 === 1 && mgedit3 === 1 && mgedit4 === 1){
                 return true;  

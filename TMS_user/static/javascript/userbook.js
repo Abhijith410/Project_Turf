@@ -1,17 +1,20 @@
 var userbookname_error= document.getElementById('userbookname');
 var userbookcontact_error= document.getElementById('userbookcontact');
 var userbookdate_error= document.getElementById('userbookdate');
-var userbooktime_error= document.getElementById('userbooktime');
+var userbooktimefrom_error= document.getElementById('userbooktimefrom');
+var userbooktimeto_error= document.getElementById('userbooktimeto');
 
         usbook1 = 1;
         usbook2 = 1;
         usbook3 = 1;
         usbook4 = 1;
+        usbook5 = 1;
         function userbooking(){
             var user_name1 = document.getElementById('user_name').value;
             var user_contact1 = document.getElementById('user_contact').value;
             var user_date1 = document.getElementById('user_date').value;
-            var user_time1 = document.getElementById('user_time').value;
+            var user_timefrom1 = document.getElementById('user_timefrom').value;
+            var user_timeto1 = document.getElementById('user_timeto').value;
     
             if(user_name1 == ""){
                 userbookname_error.innerHTML = "Please enter name";
@@ -57,27 +60,33 @@ var userbooktime_error= document.getElementById('userbooktime');
             }
             
 
-            if(user_time1 == ""){
-                userbooktime_error.innerHTML = "Please enter booking time in the format(HH:MM-HH:MM AM/PM)";
-                document.getElementById('user_time').style.borderColor = "red";
+            if(user_timefrom1 == ""){
+                userbooktimefrom_error.innerHTML = "Please select start time";
+                document.getElementById('user_timefrom').style.borderColor = "red";
                 usbook4 = 0;
             }
             else{
-                var regex = /^\(?([1-9]|0[1-9]|1[0-2]):([0-5][0-9])\)?[-. ]?([1-9]|0[1-9]|1[0-2]):([0-5][0-9])[\-\s]?((AM)|(PM))$/g;
-                if(regex.test(user_time1) === false) {
-                    document.getElementById('user_time').style.borderColor = "red";
-                    userbooktime_error.innerHTML = "Please enter time properly (eg 08:00-09:00 PM)";
-                    usbook4 = 0;
-                } 
-                else {
                     usbook4 = 1;
-                }
             }
 
-            if(usbook1 === 1 && usbook2 === 1 && usbook3 === 1 && usbook4 === 1){
+            if(user_timeto1 == ""){
+                userbooktimeto_error.innerHTML = "Please select end time";
+                document.getElementById('user_timeto').style.borderColor = "red";
+                usbook5 = 0;
+            }
+            else{
+                    usbook5 = 1;
+            }
+
+            if(usbook1 === 1 && usbook2 === 1 && usbook3 === 1 && usbook4 === 1 && usbook5 === 1){
                 return true;  
             }
             else{
                 return false;
             }
         }      
+
+        function totalcost() {
+            var x = document.getElementById("usercost").value;
+            document.getElementById("user_totalcost").innerHTML = x;
+          }

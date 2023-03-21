@@ -47,12 +47,9 @@
         <a href="{% url 'appadmin:admfeedback' %}">Feedbacks</a>
         <a href="{% url 'appadmin:admlogout' %}">Logout</a>
       </div>        
-      <div class="col-md-10 turfmanage1">
+      <div class="col-md-10 turfmanage1"> 
         <div>
-          <a href="{% url 'appadmin:admaddturf' %}"><button class="btn btn-outline-primary my-2 my-sm-0 addbutton" type="submit">Add New Turf</button></a>
-        </div> 
-        <div>
-          <h3>Turfs</h3>
+          <h4>Turfs</h4>
           <br>
           <table class="table table-striped">
             <thead>
@@ -60,6 +57,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Location</th>
+                <th scope="col">Contact</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -69,13 +67,14 @@
                 <th scope="row">{{turf.id}}</th>
                 <td>{{turf.man_turfname}}</td>
                 <td>{{turf.man_turfloc}}</td>
-                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t1"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
+                <td>{{turf.man_contact}}</td>
+                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t1{{turf.pk}}"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1"><i class="fa-sharp fa-solid fa-trash"></i></button>     
-                  <div class="modal fade" id="t1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal fade" id="t1{{turf.pk}}" tabindex="-1" role="dialog" aria-labelledby="t1{{turf.pk}}-label" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                       <div class="modal-content confbutton">
                         <div class="modal-header ">
-                          <h5 class="modal-title" id="exampleModalCenterTitle">{{turf.man_turfname}} Turf</h5>
+                          <h5 class="modal-title" id="t1{{turf.pk}}-label">{{turf.man_turfname}} Turf</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -103,6 +102,7 @@
                             </button>
                           </div>
                             <br>
+                            Cost - Rs {{turf.turf_cost}} per Hour <br>
                             {{turf.turf_desc}}
                         </div>
                         <div class="modal-footer">

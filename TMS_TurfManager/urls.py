@@ -9,5 +9,6 @@ urlpatterns = [
     path('ManagerBookings/', views.Managerbookings, name = "mbookhistory"),
     path('ManagerReviews/', views.Managerreviews, name = "mturfreview"),
     path('ManagerEditturf/<int:turf_id>', views.Managereditturf, name = "mturfedit"),
+    path('ManagerAddimage/', views.Manageraddimage, name = "mturfimage"),
     path('ManagerEditprofile/<int:edit_id>', views.Managereditprofile, name = "meditprofile"),
 ]

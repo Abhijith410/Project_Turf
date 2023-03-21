@@ -15,6 +15,7 @@ class Managerlist(models.Model):
     man_password = models.TextField(max_length=50)
     man_status = models.TextField(max_length=50)    
     turf_desc = models.TextField(max_length=500, null=True)
+    turf_cost = models.TextField(max_length=50, null=True)
 
 class Userlist(models.Model):
     user_name = models.TextField(max_length=50)
@@ -24,4 +25,6 @@ class Userlist(models.Model):
     user_password = models.TextField(max_length=50)
     user_confpassword = models.TextField(max_length=50)    
 
-  
+class Turfimages(models.Model):
+    manager_id = models.ForeignKey(Managerlist, on_delete=models.CASCADE)
+    images = models.ImageField(upload_to='images/')

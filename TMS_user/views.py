@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from . models import *
 from TMS_admin.models import Userlist
 from TMS_admin.models import Managerlist
+from TMS_admin.models import Turfimages
+
 # Create your views here.
 
 def Userhome(request):
@@ -16,16 +18,18 @@ def Usersearch(request):
     if 'userlog_id' in request.session:
         userid = request.session['userlog_id']
         userlog = Userlist.objects.get(id = userid)
-        turflist = Managerlist.objects.all()
-        return render (request, "userpages/user_srchturf.html", {'user': userlog, 'turf': turflist})
+        turflist = Managerlist.objects.filter(man_status = 'accepted').all().order_by('id')
+        turfimages = Turfimages.objects.all()
+        return render (request, "userpages/user_srchturf.html", {'user': userlog, 'turf': turflist, 'imageturf': turfimages})
     else:
         return render (request, "adminpages/LoginUser.html")
 
-def Userconfirm(request):
+def Userconfirm(request,turfid):
     if 'userlog_id' in request.session:
         userid = request.session['userlog_id']
         userlog = Userlist.objects.get(id = userid)
-        return render (request, "userpages/user_confbook.html", {'user': userlog})
+        turf_details = Managerlist.objects.get(id = turfid)
+        return render (request, "userpages/user_confbook.html", {'user': userlog, 'turfdetails': turf_details})
     else:
         return render (request, "adminpages/LoginUser.html")
 
@@ -47,7 +51,19 @@ def Userfeedback(request):
     if 'userlog_id' in request.session:
         userid = request.session['userlog_id']
         userlog = Userlist.objects.get(id = userid)
-        return render (request, "userpages/user_feedbck.html", {'user': userlog})
+        fmessage = ""
+        if request.method == "POST":
+            name = request.POST['fname']
+            email = request.POST['fmail']
+            contact = request.POST['fcontact']
+            desc = request.POST['fdesc']
+            feedback = Feedbacks(f_name = name, f_email = email, f_contact = contact, f_message = desc)
+            feedback.save()
+            if feedback:
+                fmessage = "Message recorded successfully"
+            else:
+                fmessage = "error"    
+        return render (request, "userpages/user_feedbck.html", {'user': userlog, 'msg': fmessage})
     else:
         return render (request, "adminpages/LoginUser.html")
 

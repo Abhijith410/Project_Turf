@@ -50,6 +50,14 @@ def Adminaddmngr(request,mn_id):
     else:
         return render (request, "adminpages/admin_login.html")
 
+def Adminrejectmngr(request,mn_id):
+    if 'adlog_id' in request.session:
+        man_status = 'rejected'
+        Managerlist.objects.filter(id=mn_id).update(man_status = man_status)
+        return redirect ('appadmin:admrequests')
+    else:
+        return render (request, "adminpages/admin_login.html")
+
 def Adminaddturf(request):
     if 'adlog_id' in request.session:
         return render (request, "adminpages/addturf.html")
@@ -58,27 +66,35 @@ def Adminaddturf(request):
     
 def Adminfeedbacks(request):
     if 'adlog_id' in request.session:
-        return render (request, "adminpages/admin_feed.html")
+        us_feed = Feedbacks.objects.all().order_by('id')
+        return render (request, "adminpages/admin_feed.html", {'feed':us_feed})
     else:
         return render (request, "adminpages/admin_login.html")
     
 def Adminmanagers(request):
     if 'adlog_id' in request.session:
-        mr_data = Managerlist.objects.filter(man_status = 'accepted')
+        mr_data = Managerlist.objects.filter(man_status = 'accepted').order_by('id')
         return render (request, "adminpages/admin_manager.html", {'m_data':mr_data})
     else:
         return render (request, "adminpages/admin_login.html")
+    
+def Adminrejmanagers(request):
+    if 'adlog_id' in request.session:
+        rmr_data = Managerlist.objects.filter(man_status = 'rejected').order_by('id')
+        return render (request, "adminpages/admin_manager_reject.html", {'rm_data':rmr_data})
+    else:
+        return render (request, "adminpages/admin_login.html")    
 
 def Adminusers(request):
     if 'adlog_id' in request.session:
-        user_data = Userlist.objects.all()
+        user_data = Userlist.objects.all().order_by('id')
         return render (request, "adminpages/admin_users.html", {'u_data':user_data})
     else:
         return render (request, "adminpages/admin_login.html")  
 
 def Adminturfs(request):
     if 'adlog_id' in request.session:
-        turf_data = Managerlist.objects.filter(man_status = 'accepted')
+        turf_data = Managerlist.objects.filter(man_status = 'accepted').order_by('id')
         return render (request, "adminpages/admin_turf.html", {'t_data':turf_data})
     else:
         return render (request, "adminpages/admin_login.html")
@@ -133,7 +149,7 @@ def Loginmanager(request):
             if manager.man_status == 'accepted':
                 return redirect('manager:mhomepage')
             else:
-                return render (request, "adminpages/LoginManager.html", {'fail':'No Manager found.'})
+                return render (request, "adminpages/LoginManager.html", {'fail':'Invalid Login credentials!!!'})
         except Managerlist.DoesNotExist:
             return render (request, "adminpages/LoginManager.html", {'fail':'No Manager found.'})
     return render (request, "adminpages/LoginManager.html")  

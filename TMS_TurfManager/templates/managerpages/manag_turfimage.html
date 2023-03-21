@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirm Booking</title>
-    <link href="{% static '/css/proj3.css' %}" rel="stylesheet"/>
+    <title>Add Turf Images</title>
+    <link href="{% static '/css/proj2.css' %}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -20,71 +20,42 @@
   </header>  
   <div class="welcome_user">
     <nav class="navbar navbar-light">
-      <a class="navbar-brand">Hello {{user.user_name}}</a>
+      <a class="navbar-brand">Hello {{manager_data.man_name}}</a>
       <form class="form-inline">
         <li><a href="{% url 'appadmin:homepage' %}">Home</a></li>
-        <li><a href="{% url 'user:uhomepage' %}">Dashboard </a></li>
-        <a href="{% url 'appadmin:userlogout' %}"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button></a>
+        <li><a href="{% url 'manager:mhomepage' %}">Dashboard </a></li>
+        <a href="{% url 'appadmin:managerlogout' %}"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button></a>
       </form>
     </nav>
   </div>
-  <div class="container-fluid confirmation">
-    <div class="row">
-      <div class="col-md-4 sm-4 confbook1 ">
-        <a href="{% url 'user:usearchturf' %}"><button class="btn btn-outline-light">Back to Search Page</button></a>
-      </div>       
-      <div class="col-md-8 sm-8 confbook">
-        <form action="" method="post">
+  <div class="container-fluid p-4 pb-0 editturf">
+    <div class="row"> 
+      <div class="col-sm-2 md-2 editturf1">
+        <a href="{% url 'manager:mturf' %}"><--Back to My Turf</a>
+      </div>  
+      <div class="col-sm-9 md-9  editturf1">
+        <br>
+        <form action="" method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="heading1">
-            <h1>Confirm Booking</h1>
-            <br>
+            <h1><u>Add Turf Image</u></h1>
           </div>
+          <br>
           <div class="form-group">
-            <label for="">User Name</label>
-            <input type="text" value="{{user.user_name}}" class="" id="user_name" placeholder=""><br><br>
-            <span class="bookerror" id="userbookname"></span><br>
+            <label for="">Turf Image</label>
+            <input type="file" name="image" id="">
+            <br><br><br>
+            <p>*Please select one image at a time*</p>
           </div>
+          <br><br><br><br>
           <div class="form-group">
-            <label for="">Contact No</label>
-            <input type="tel" value="{{user.user_mobile}}" class="" id="user_contact" placeholder=""><br><br>
-            <span class="bookerror" id="userbookcontact"></span><br>
-          </div>
-          <div class="form-group">
-            <label for="">Chosen Turf</label>
-            <input type="text" name="" value="{{turfdetails.man_turfname}}" id="" disabled style="color: aliceblue;"><br><br>
-            <span class="bookerror" id="userbookturf"></span><br>
-          </div>
-          <div class="form-group">
-            <label for="">Turf Cost per Hour</label>
-            <input type="text" name="" value="{{turfdetails.turf_cost}}" id="usercost" disabled style="color: aliceblue;"><br><br>
-            <span class="bookerror" id="userbookturfcost"></span><br>
-          </div>
-          <div class="form-group">
-            <label for="">Date</label>
-            <input type="date" class="" id="user_date" placeholder=""><br><br>
-            <span class="bookerror" id="userbookdate"></span><br>
-          </div>
-          <div class="form-group timeslot">
-            <label for="">Time From:</label>
-            <input type="time" class="" id="user_timefrom" placeholder=""><br>
-             <span class="bookerror" id="userbooktimefrom"></span><br>
-            <label for="">Time To:</label>
-            <input type="time" onchange="totalcost(this.value)" class="" id="user_timeto" placeholder=""><br>
-            <span class="bookerror" id="userbooktimeto"></span><br><br>
-          </div>
-          <div class="form-group">
-            <label for="">Total Cost</label>
-            <input type="text" class="" id="user_totalcost" disabled style="color: aliceblue;"><br><br>
-            <span class="bookerror" id="userbooktotal"></span><br>
-          </div>
-          <div class="form-group">
-            <button onclick="return userbooking()" type="submit" class="btn btn-block submit">Submit</button>
+            <button type="submit" class="btn submit">Submit</button>
           </div>
         </form>
       </div> 
-    </div>  
-  </div>   
+
+    </div>    
+  </div>  
   <div class="container- my-3">
     <footer class="text-center text-lg-start text-white" style="background:linear-gradient(to right, #568EE3, #B368ED);">
       <div class="container p-4 pb-0">
@@ -171,13 +142,7 @@
     </footer>
   </div>
    
-    <script type="text/javascript">
-      function totalcost() {
-        var x = document.getElementById("usercost").value;
-        document.getElementById("user_totalcost").value = x;
-    }
-    </script>
-    <script src="{% static '/javascript/userbook.js' %}"></script>    
+    <script src="{% static '/javascript/manag.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </body>

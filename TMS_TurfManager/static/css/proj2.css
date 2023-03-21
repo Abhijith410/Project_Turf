@@ -1029,6 +1029,17 @@ bottom: 6px;
   width: 60%;
 }
 
+.editturf1 a{
+  text-decoration: none;
+  color: whitesmoke;
+  font-weight: 700;
+}
+
+.editturf1 a:hover{
+  color: #ff0303;
+  text-decoration: none;
+}
+
 .editturf1 textarea{
   float: right;
   width: 60%;
@@ -1067,14 +1078,14 @@ bottom: 6px;
   background-size: 100% 100%;
 }
 .viewturf{
-  background: linear-gradient(to right,green,yellow);
+  background: linear-gradient(to right,rgb(80, 245, 130),rgb(250, 125, 125));
   width: 100%;
   height: 100%;
   background-size: contain;
   background-size: 100% 100%;
 }
 .viewturf h2{
-  padding-top: 60px;
+  padding-top: 30px;
   text-align: center;
   font-weight: bolder;
   font-variant: small-caps;
@@ -1093,6 +1104,17 @@ bottom: 6px;
   color: #ff0303;
 }
 
+.viewturf .edit_images{
+  float: right;
+  color: #007ae1;
+  font-size: large;
+  font-weight: bold;
+}
+.viewturf .edit_images:hover{
+  text-decoration: none;
+  color: #ff0303;
+}
+
 .viewturf .request1{
   margin-top: 50px;
   margin-bottom: 30px;
@@ -1101,17 +1123,12 @@ bottom: 6px;
 
 .viewturf .request1 h3{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: x-large;
+  font-size: xx-large;
 }
 
 .viewturf .request1 p{
-  font-family: cursive;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 500;
-}
-
-.viewturf .request1 .carousel-inner > .item > img{
-  max-width: 100%;
-  height: auto;
 }
 
 .managerhome .manager_home{
@@ -1151,7 +1168,7 @@ bottom: 6px;
 
 .managerhome h2{
   margin-left: 40px;
-  margin-top: 50px;
+  margin-top: 30px;
   color: white;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-weight: 800;

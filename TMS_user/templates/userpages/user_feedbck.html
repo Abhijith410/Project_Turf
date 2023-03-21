@@ -33,16 +33,18 @@
         <div class="col-md-8 sm-8 user_feed">
           <h1>Feedback</h1>
           <form action="" method="post">
-            <input type="text" name="" class="form-control" id="feedname" placeholder="Name">
+            {% csrf_token %}
+            <input type="text" name="fname" value="{{user.user_name}}" class="form-control" id="feedname" placeholder="Name">
             <span class="requesterror" id="ufeedname"></span><br>
-            <input type="email" name="" class="form-control" id="feedemail" placeholder="E-mail">
+            <input type="email" name="fmail" value="{{user.user_email}}" class="form-control" id="feedemail" placeholder="E-mail">
             <span class="requesterror" id="ufeedemail"></span><br>
-            <input type="tel" name="" class="form-control" id="feedphone" placeholder="Contact Number">
+            <input type="tel" name="fcontact" value="{{user.user_mobile}}" class="form-control" id="feedphone" placeholder="Contact Number">
             <span class="requesterror" id="ufeedphone"></span><br>
-            <textarea name="" id="feeddesc" cols="70" rows="5" placeholder="Message"></textarea><br>
+            <textarea name="fdesc" id="feeddesc" cols="70" rows="5" placeholder="Message"></textarea><br>
             <span class="requesterror" id="ufeeddesc"></span><br><br>
             <button onclick="return userfeedback()" class="btn feedsubmit" type="submit">Submit</button>
           </form>
+          <p>{{msg}}</p>
         </div>       
         <div class="col-md-4 sm-8 user_feed">    
         </div> 
