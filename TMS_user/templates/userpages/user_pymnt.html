@@ -8,6 +8,7 @@
     <title>Payment Gateway</title>
     <link href="{% static '/css/proj3.css' %}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
   <div class="container payment-form">
@@ -53,5 +54,28 @@
       </div>
     </form>
     </div>
+    <div id="timedif">
+
+    </div>
+    <input type="time" class="form-control" name="eq_pf" id="eq_pf" value="">
+      
+    <input type="time" class="form-control" name="eq_pt" id="eq_pt" value="">
+    <button id="btn">
+    Difference
+    </button>
 </body>
+
+<script>
+  $(function() {
+
+});
+$("#btn").click(function() {
+  var from = $("#eq_pf").val();
+  var to = $("#eq_pt").val();
+
+  var diff = (new Date("1970-1-1 " + from) - new Date("1970-1-1 " + to)) / 1000 / 60 / 60;
+  $("#timedif").html(diff.toString());
+});
+
+</script>
 </html>

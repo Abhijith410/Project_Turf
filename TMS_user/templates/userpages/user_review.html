@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Turfs</title>
+    <title>Turf Review</title>
     <link href="{% static '/css/proj3.css' %}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
@@ -29,85 +29,35 @@
       </form>
     </nav>
   </div>
-  <div class="container-fluid turfdetails">
-    <div class="container col-lg-6 col-md-6 col-sm-12 p-0 searchbar">
-      <div class=" locationsearch">
-        <label for=""><b>Search by Location: </b></label>
-        <select name="turfs" id="locations"><br>
-          <option value="default">--Select--</option>
-          {% for turf_ in turf %}
-          <option value="{{turf_.id}}">{{turf_.man_turfloc}}</option>
-          {% endfor %}
-        </select>
-      </div>
-      <form autocomplete="on" action="{% url 'user:usearchlist' %}" method="post">
-        {% csrf_token %}
-        <input type="search" name="search" class="search" id="form1" name="search">
-        <ul class="list"></ul>         
-        <input type="submit" class="btn btn-primary searchbut" value="Search">  <input type="reset" class="btn btn-dark" value="Reset">
-      </form>
-    </div>  
-    {% for turf_ in turf %}
-    <div class="row row-cols-1 row-cols-md-2 searchturf">
-      <div class="col mb-4">
-        <div class="card">
-          <img src="{{image.images.url}}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h4 class="card-title">{{turf_.man_turfname}} Turf</h4>
-            <p class="card-text">Location: {{turf_.man_turfloc}} </p> <br>
-            <a href="{% url 'user:uconfirmturf' turf_.id %}"><button type="button" class="btn btn book">Book Now</button></a>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t1{{turf_.pk}}"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
-            <a href="{% url 'user:ureview' turf_.id %}"><button type="button" class="btn btn book">Review</button></a>
-              <div class="modal fade" id="t1{{turf_.pk}}" tabindex="-1" role="dialog" aria-labelledby="t1{{turf_.pk}}-label" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                  <div class="modal-content confbutton">
-                    <div class="modal-header ">
-                      <h5 class="modal-title" id="t1{{turf_.pk}}-label">{{turf_.man_turfname}} Turf</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                          {% for image in imageturf %}
-                          <div class="carousel-item {% if forloop.first %} active {% endif %}">
-                            <img src="{{image.images.url}}" class="d-block w-100" alt="..." style="width: 100%; height: 400px;">
-                          </div>
-                          {% endfor %}
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls1" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-target="#carouselExampleControls1" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                        </button>
-                      </div>
-                      <br>
-                      <br>Location - {{turf_.man_turfloc}}
-                      <br>Cost - Rs {{turf_.turf_cost}} per Hour
-                      <br>{{turf_.turf_desc}}
-                      <br>------------------------------------------------------------
-                      <br><u><b>Reviews</b></u><br>
-                      {% for rev in reviews %}
-                      <br>{{rev.r_name}} - "{{rev.r_message}}"
-                      <br>
-                      {% endfor %}
-                    </div>
-                    <div class="modal-footer">
-                      <a href="{% url 'user:uconfirmturf' turf_.id %}"><button type="button" class="btn btn book">Book Now</button></a>
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div>   
-          </div>
+  <div class="container-fluid review">
+    <br>
+    <a href="{% url 'user:usearchturf' %}">Back to Search Page</a>
+    <br><h3>Turf Review</h3>
+    <div class="row">
+        <div class="col-sm-5 left">
+            <h4>{{turf.man_turfname}} Turf</h4>
+            <br>
+            <p><b>{{turf.man_turfloc}}</b></p>
         </div>
-      </div>
+        <div class="col-sm-7">
+            <form action="" method="post">
+            {% csrf_token %}
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Name:</label><br>
+                  <input class="form-control" id="message-text name" type="text" name="revname" value="{{user.user_name}}">
+                  <span class="requesterror" id="nameerror"></span><br>
+                  <label for="message-text" class="col-form-label">Contact:</label><br>
+                  <input class="form-control" id="message-text contact" type="tel" name="revcontact" value="{{user.user_mobile}}">
+                  <span class="requesterror" id="contacterror"></span><br>
+                  <label for="message-text" class="col-form-label">Message:</label>
+                  <textarea class="form-control" name="revmessage" id="message-text message"></textarea>
+                  <span class="requesterror" id="messageerror"></span><br><br>
+                  <button type="submit" onclick="return userreview()" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+            <p>{{msg}}</p>
+        </div>
     </div>
-    {% endfor %}
   </div>
   <div class="container- my-3">
     <footer class="text-center text-lg-start text-white" style="background:linear-gradient(to right, #568EE3, #B368ED);">

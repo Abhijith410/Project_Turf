@@ -40,18 +40,18 @@
           {% endfor %}
         </select>
       </div>
-      <form autocomplete="on" action="{% url 'user:usearchlist' %}" method="post">
+      <form autocomplete="off" action="{% url 'user:usearchlist' %}" method="post">
         {% csrf_token %}
-        <input type="search" name="search" class="search" id="form1" name="search">
+        <input type="search" name="search" class="search" id="form1" name="form-control">
         <ul class="list"></ul>         
         <input type="submit" class="btn btn-primary searchbut" value="Search">  <input type="reset" class="btn btn-dark" value="Reset">
       </form>
     </div>  
-    {% for turf_ in turf %}
+    {% for turf_ in turf1 %}
     <div class="row row-cols-1 row-cols-md-2 searchturf">
       <div class="col mb-4">
         <div class="card">
-          <img src="{{image.images.url}}" class="card-img-top" alt="...">
+          <img src="{{imageturf.images.url}}" class="card-img-top" alt="...">
           <div class="card-body">
             <h4 class="card-title">{{turf_.man_turfname}} Turf</h4>
             <p class="card-text">Location: {{turf_.man_turfloc}} </p> <br>
@@ -71,7 +71,13 @@
                       <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                           {% for image in imageturf %}
-                          <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                          <div class="carousel-item active">
+                            <img src="{{image.images.url}}" class="d-block w-100" alt="..." style="width: 100%; height: 400px;">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="{{image.images.url}}" class="d-block w-100" alt="..." style="width: 100%; height: 400px;">
+                          </div>
+                          <div class="carousel-item">
                             <img src="{{image.images.url}}" class="d-block w-100" alt="..." style="width: 100%; height: 400px;">
                           </div>
                           {% endfor %}
@@ -91,8 +97,8 @@
                       <br>{{turf_.turf_desc}}
                       <br>------------------------------------------------------------
                       <br><u><b>Reviews</b></u><br>
-                      {% for rev in reviews %}
-                      <br>{{rev.r_name}} - "{{rev.r_message}}"
+                      {% for user in users %}
+                      <br>{{user.review_user}} - "{{user.review_message}}"
                       <br>
                       {% endfor %}
                     </div>

@@ -67,17 +67,16 @@
           </div>
           <div class="form-group timeslot">
             <label for="">Time From:</label>
-            <input type="time" class="" id="user_timefrom" placeholder=""><br>
-             <span class="bookerror" id="userbooktimefrom"></span><br>
+            <input type="time" class="" value="00:00:00" step="1" id="user_timefrom" placeholder=""><br>
+            <span class="bookerror" id="userbooktimefrom"></span><br>
             <label for="">Time To:</label>
-            <input type="time" onchange="totalcost(this.value)" class="" id="user_timeto" placeholder=""><br>
+            <input type="time" onchange="return userbooking()" value="00:00:00" step="1" class="" id="user_timeto" placeholder=""><br>
             <span class="bookerror" id="userbooktimeto"></span><br><br>
           </div>
           <div class="form-group">
             <label for="">Total Cost</label>
-            <input type="text" class="" id="user_totalcost" disabled style="color: aliceblue;"><br><br>
+            <input type="text" class="" id="user_totalcost" ><br><br>
             <span class="bookerror" id="userbooktotal"></span><br>
-          </div>
           <div class="form-group">
             <button onclick="return userbooking()" type="submit" class="btn btn-block submit">Submit</button>
           </div>
@@ -170,13 +169,7 @@
       </div>
     </footer>
   </div>
-   
-    <script type="text/javascript">
-      function totalcost() {
-        var x = document.getElementById("usercost").value;
-        document.getElementById("user_totalcost").value = x;
-    }
-    </script>
+
     <script src="{% static '/javascript/userbook.js' %}"></script>    
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>

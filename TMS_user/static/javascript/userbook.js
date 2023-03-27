@@ -13,9 +13,21 @@ var userbooktimeto_error= document.getElementById('userbooktimeto');
             var user_name1 = document.getElementById('user_name').value;
             var user_contact1 = document.getElementById('user_contact').value;
             var user_date1 = document.getElementById('user_date').value;
-            var user_timefrom1 = document.getElementById('user_timefrom').value;
-            var user_timeto1 = document.getElementById('user_timeto').value;
+            // var user_timefrom1 = document.getElementById('user_timefrom').value;
+            // var user_timeto1 = document.getElementById('user_timeto').value;
+            
+            const getSeconds = s => s.split(":").reduce((acc, curr) => acc * 60 + +curr, 0);
+            var seconds1 = getSeconds(document.getElementById("user_timefrom").value);
+            var seconds2 = getSeconds(document.getElementById("user_timeto").value);
+            var res = Math.abs(seconds2 - seconds1);
+
+            var hours = Math.floor(res / 3600);
+            // var minutes = Math.floor(res % 3600 / 60);
+            // var seconds = res % 60;
     
+            var x = hours ;
+            document.getElementById('user_totalcost').value = x * document.getElementById('usercost').value;
+
             if(user_name1 == ""){
                 userbookname_error.innerHTML = "Please enter name";
                 document.getElementById('user_name').style.borderColor = "red";
@@ -79,6 +91,7 @@ var userbooktimeto_error= document.getElementById('userbooktimeto');
             }
 
             if(usbook1 === 1 && usbook2 === 1 && usbook3 === 1 && usbook4 === 1 && usbook5 === 1){
+                
                 return true;  
             }
             else{
@@ -86,7 +99,4 @@ var userbooktimeto_error= document.getElementById('userbooktimeto');
             }
         }      
 
-        function totalcost() {
-            var x = document.getElementById("usercost").value;
-            document.getElementById("user_totalcost").innerHTML = x;
-          }
+           

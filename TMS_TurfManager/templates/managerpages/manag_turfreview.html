@@ -42,12 +42,14 @@
             </tr>
           </thead>
           <tbody>
+            {% for rev in reviews %}
             <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td></td>
-              <td>""</td>
+              <th scope="row">{{rev.id}}</th>
+              <td>{{rev.r_name}}</td>
+              <td>{{rev.r_contact}}</td>
+              <td>"{{rev.r_message}}"</td>
             </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>

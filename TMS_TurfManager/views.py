@@ -42,7 +42,8 @@ def Managerreviews(request):
     if 'managerlog_id' in request.session:
         id = request.session['managerlog_id']
         manager = Managerlist.objects.get(id = id)
-        return render (request, "managerpages/manag_turfreview.html", {'manager_data': manager})
+        review = Turfreview.objects.filter(m_id_id = id)
+        return render (request, "managerpages/manag_turfreview.html", {'manager_data': manager, 'reviews': review})
     else:
         return render (request, "adminpages/LoginManager.html")
 

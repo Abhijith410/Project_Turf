@@ -1477,3 +1477,51 @@ form .ratebutton2 button, form .ratebutton3 button{
 form .ratebutton2 button:hover, form .ratebutton3 button:hover{
   background: #1b1b1b;
 }
+
+.review{
+  padding: 20px;
+  background:linear-gradient(to left,  rgb(77, 77, 225), rgb(97, 232, 97));
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-size: cover;
+}
+
+.review h3{
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  padding-bottom: 30px;;
+}
+
+.review h4{
+  font-weight: 900;
+}
+
+.review a{
+  padding-top: 20px;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.review a:hover{
+  text-decoration: none;
+  color: rgb(255, 0, 0);
+}
+
+.review form{
+  width: 100%; 
+}
+
+.review span{
+  color: red;
+}
+
+.review .left{
+  text-align: center;
+  padding: 30px;
+}
+
+.review .right{
+  right: 0;
+}
