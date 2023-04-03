@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking History</title>
     <link href="{% static '/css/proj2.css' %}" rel="stylesheet"/>
+    <link rel = "icon" href = "https://cdn-icons-png.flaticon.com/128/7322/7322293.png" width="25px" height="20px" type = "image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -40,20 +41,22 @@
               <th scope="col">Contact Number</th>
               <th scope="col">Date</th>
               <th scope="col">Time Slot</th>
+              <th scope="col">Cost</th>
               <th scope="col">Booking Status</th>
               <th scope="col">Payment Status</th>
             </tr>
           </thead>
           <tbody>
-            {% for req in req_data %}
+            {% for book in bookings %}
             <tr>
-              <th scope="row">{{req.id}}</th>
-              <td>{{req.man_name}}</td>
-              <td>{{req.man_name}}</td>
-              <td>{{req.man_name}}</td>
-              <td>{{req.man_name}}</td>
-              <td>Confirmed</td>
-              <td>Complete</td>
+              <th scope="row">{{book.id}}</th>
+              <td>{{book.b_name}}</td>
+              <td>{{book.b_contact}}</td>
+              <td>{{book.b_date}}</td>
+              <td>{{book.b_tst}} - {{book.b_tend}}</td>
+              <td>{{book.b_tcost}}</td>
+              <td>{{book.b_status}}</td>
+              <td>{{book.b_pstatus}}</td>
             </tr>
             {% endfor %}
           </tbody>

@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirm User Requests</title>
     <link href="{% static '/css/proj2.css' %}" rel="stylesheet"/>
+    <link rel = "icon" href = "https://cdn-icons-png.flaticon.com/128/5681/5681932.png" width="25px" height="20px" type = "image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
 <body>
   <header>
@@ -45,15 +46,18 @@
             </tr>
           </thead>
           <tbody>
+            {% for book in bookings %}
             <tr>
-              <th scope="row">1</th>
-              <td>Alan</td>
-              <td>9998887775</td>
-              <td>Bernabeu</td>
-              <td>26/01/2023</td>
-              <td>09:00-10:00 PM</td>
-              <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-edit"></i></button></td>
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <th scope="row">{{book.id}}</th>
+              <td>{{book.b_name}}</td>
+              <td>{{book.b_contact}}</td>
+              <td>{{book.b_turf}}</td>
+              <td>{{book.b_date}}</td>
+              <td>{{book.b_tst}} - {{book.b_tend}}</td>
+              <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#b{{book.pk}}"><i class="fas fa-circle-check"> Accept</i></button>
+                <a href="{% url 'manager:mcancelbook' %}"><button type="button" class="btn btn-secondary"><i class="fa-sharp fa-solid fa-times-circle"> Cancel</i></button></a>
+              </td>
+                <div class="modal fade" id="b{{book.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content confbutton">
                       <div class="modal-header ">
@@ -63,17 +67,17 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                        Alan ; Bernabeu ; 26/01/2023 ; 09:00-10:00 PM
+                        {{book.b_name}} ; {{book.b_turf}} ; {{book.b_date}} ; {{book.b_tst}} - {{book.b_tend}}
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Cancel Booking</button>
                         <button type="button" class="btn btn-success">Generate Bill</button>
                       </div>
                     </div>
                   </div>
                 </div>
             </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>

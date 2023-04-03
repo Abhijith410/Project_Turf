@@ -26,7 +26,8 @@ def Managerconfirm(request):
     if 'managerlog_id' in request.session:
         id = request.session['managerlog_id']
         manager = Managerlist.objects.get(id = id)
-        return render (request, "managerpages/manag_confbook.html", {'manager_data': manager})
+        booking = Bookings.objects.filter(mn_id_id = id, b_status = 'Pending')
+        return render (request, "managerpages/manag_confbook.html", {'manager_data': manager, 'bookings': booking})
     else:
         return render (request, "adminpages/LoginManager.html")
 
@@ -34,9 +35,30 @@ def Managerbookings(request):
     if 'managerlog_id' in request.session:
         id = request.session['managerlog_id']
         manager = Managerlist.objects.get(id = id)
-        return render (request, "managerpages/manag_bookhist.html", {'manager_data': manager})
+        booking = Bookings.objects.filter(mn_id_id = id)
+        return render (request, "managerpages/manag_bookhist.html", {'manager_data': manager, 'bookings': booking})
     else:
         return render (request, "adminpages/LoginManager.html")
+
+def Managercancel(request):
+    if 'managerlog_id' in request.session:
+        id = request.session['managerlog_id']
+        status = 'Cancelled'
+        payment = 'NA'
+        Bookings.objects.filter(mn_id_id = id).update(b_status = status, b_pstatus = payment)
+        return redirect ('manager:mbookhistory')
+    else:
+        return render (request, "adminpages/LoginManager.html")
+    
+def Manageraccept(request):
+    if 'managerlog_id' in request.session:
+        id = request.session['managerlog_id']
+        status = 'Confirmed'
+        payment = 'NA'
+        Bookings.objects.filter(mn_id_id = id).update(b_status = status, b_pstatus = payment)
+        return redirect ('manager:mbookhistory')
+    else:
+        return render (request, "adminpages/LoginManager.html")    
 
 def Managerreviews(request):
     if 'managerlog_id' in request.session:

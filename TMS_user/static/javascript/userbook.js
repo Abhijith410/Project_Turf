@@ -13,8 +13,7 @@ var userbooktimeto_error= document.getElementById('userbooktimeto');
             var user_name1 = document.getElementById('user_name').value;
             var user_contact1 = document.getElementById('user_contact').value;
             var user_date1 = document.getElementById('user_date').value;
-            // var user_timefrom1 = document.getElementById('user_timefrom').value;
-            // var user_timeto1 = document.getElementById('user_timeto').value;
+
             
             const getSeconds = s => s.split(":").reduce((acc, curr) => acc * 60 + +curr, 0);
             var seconds1 = getSeconds(document.getElementById("user_timefrom").value);
@@ -72,7 +71,7 @@ var userbooktimeto_error= document.getElementById('userbooktimeto');
             }
             
 
-            if(user_timefrom1 == ""){
+            if(seconds1 == ""){
                 userbooktimefrom_error.innerHTML = "Please select start time";
                 document.getElementById('user_timefrom').style.borderColor = "red";
                 usbook4 = 0;
@@ -81,7 +80,7 @@ var userbooktimeto_error= document.getElementById('userbooktimeto');
                     usbook4 = 1;
             }
 
-            if(user_timeto1 == ""){
+            if(seconds2 == ""){
                 userbooktimeto_error.innerHTML = "Please select end time";
                 document.getElementById('user_timeto').style.borderColor = "red";
                 usbook5 = 0;

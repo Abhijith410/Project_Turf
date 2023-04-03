@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirm Booking</title>
     <link href="{% static '/css/proj3.css' %}" rel="stylesheet"/>
+    <link rel = "icon" href = "https://cdn-icons-png.flaticon.com/128/7050/7050939.png" width="25px" height="20px" type = "image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -42,45 +43,46 @@
           </div>
           <div class="form-group">
             <label for="">User Name</label>
-            <input type="text" value="{{user.user_name}}" class="" id="user_name" placeholder=""><br><br>
+            <input type="text" value="{{user.user_name}}" name="us_name" class="" id="user_name" placeholder=""><br><br>
             <span class="bookerror" id="userbookname"></span><br>
           </div>
           <div class="form-group">
             <label for="">Contact No</label>
-            <input type="tel" value="{{user.user_mobile}}" class="" id="user_contact" placeholder=""><br><br>
+            <input type="tel" value="{{user.user_mobile}}" name="us_contact" class="" id="user_contact" placeholder=""><br><br>
             <span class="bookerror" id="userbookcontact"></span><br>
           </div>
           <div class="form-group">
             <label for="">Chosen Turf</label>
-            <input type="text" name="" value="{{turfdetails.man_turfname}}" id="" disabled style="color: aliceblue;"><br><br>
+            <input type="text" name="us_turf" value="{{turfdetails.man_turfname}}" id="" ><br><br>
             <span class="bookerror" id="userbookturf"></span><br>
           </div>
           <div class="form-group">
             <label for="">Turf Cost per Hour</label>
-            <input type="text" name="" value="{{turfdetails.turf_cost}}" id="usercost" disabled style="color: aliceblue;"><br><br>
+            <input type="text" name="us_cost" value="{{turfdetails.turf_cost}}" id="usercost"><br><br>
             <span class="bookerror" id="userbookturfcost"></span><br>
           </div>
           <div class="form-group">
             <label for="">Date</label>
-            <input type="date" class="" id="user_date" placeholder=""><br><br>
+            <input type="date" class="" name="us_date" id="user_date" placeholder=""><br><br>
             <span class="bookerror" id="userbookdate"></span><br>
           </div>
           <div class="form-group timeslot">
             <label for="">Time From:</label>
-            <input type="time" class="" value="00:00:00" step="1" id="user_timefrom" placeholder=""><br>
+            <input type="time" class="" name="us_start" value="00:00:00" step="1" id="user_timefrom" placeholder=""><br>
             <span class="bookerror" id="userbooktimefrom"></span><br>
             <label for="">Time To:</label>
-            <input type="time" onchange="return userbooking()" value="00:00:00" step="1" class="" id="user_timeto" placeholder=""><br>
+            <input type="time" name="us_end" onchange="return userbooking()" value="00:00:00" step="1" class="" id="user_timeto" placeholder=""><br>
             <span class="bookerror" id="userbooktimeto"></span><br><br>
           </div>
           <div class="form-group">
             <label for="">Total Cost</label>
-            <input type="text" class="" id="user_totalcost" ><br><br>
+            <input type="text" class="" name="us_totalcost" id="user_totalcost" ><br><br>
             <span class="bookerror" id="userbooktotal"></span><br>
           <div class="form-group">
             <button onclick="return userbooking()" type="submit" class="btn btn-block submit">Submit</button>
           </div>
         </form>
+        <br><p>{{msg}}</p>
       </div> 
     </div>  
   </div>   

@@ -21,5 +21,6 @@ urlpatterns = [
     path('AdminRejManagers/', views.Adminrejmanagers, name = "admrejmanagers"),
     path('AdminUsers/', views.Adminusers, name = "admusers"),
     path('AdminTurfs/', views.Adminturfs, name = "admturfs"),
+    path('Adminimages/<int:turfid>', views.Adminviewimages, name = "admturfimages"),
     path('AdminRequests/', views.Adminrequests, name = "admrequests"),
 ]

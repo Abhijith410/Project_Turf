@@ -80,7 +80,7 @@ WSGI_APPLICATION = "TurfManagementSystem.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "turf",
+        "NAME": "turfs",
         "USER": "postgres",
         "PASSWORD": "postgre",
         "HOST": "127.0.0.1",
