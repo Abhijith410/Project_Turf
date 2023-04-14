@@ -69,7 +69,7 @@
                 <td>{{turf.man_turfname}}</td>
                 <td>{{turf.man_turfloc}}</td>
                 <td>{{turf.man_contact}}</td>
-                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t1{{turf.pk}}"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
+                <td><form action="{% url 'appadmin:admturfimages' turf.id %}"><button type="submit" class="btn btn-primary"><i class="fa-sharp fa-solid fa-circle-info"></i></button></form>
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1"><i class="fa-sharp fa-solid fa-trash"></i></button>     
                   <div class="modal fade" id="t1{{turf.pk}}" tabindex="-1" role="dialog" aria-labelledby="t1{{turf.pk}}-label" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">

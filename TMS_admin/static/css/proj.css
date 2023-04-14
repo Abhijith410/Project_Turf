@@ -796,6 +796,38 @@ bottom: 6px;
   font-weight: bold;
 }
 
+.turfmanage2{
+  padding: 40px;
+}
+
+.turfmanage2 h2{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: xx-large;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.turfmanage2 p{
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: large;
+}
+
+.turfmanage2 .back{
+  float: left;
+  text-decoration: none;
+  color: rgb(3, 3, 120);
+}
+
+.turfmanage2 .back:hover{
+  color: #fa0202;
+}
+
+.turfmanage2 img{
+  padding: 20px;
+}
+
 .addturf{
   background: linear-gradient(to right, rgb(10, 116, 238), rgb(164, 247, 69));
   width: 100%;

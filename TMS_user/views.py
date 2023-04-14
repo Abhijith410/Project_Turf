@@ -18,10 +18,13 @@ def Usersearch(request):
     if 'userlog_id' in request.session:
         userid = request.session['userlog_id']
         userlog = Userlist.objects.get(id = userid)
-        turflist = Managerlist.objects.filter(man_status = 'accepted').all().order_by('id')
-        # turfimages = Turfimages.objects.filter(manager_id_id = userid)    
+        turflist = Managerlist.objects.filter(man_status = 'accepted').order_by('id')
+        turfimages = Turfimages.objects.filter(manager_id = userid)    
         review = Turfreview.objects.filter(m_id_id = userid)
-        return render (request, "userpages/user_srchturf.html", {'user': userlog, 'turf': turflist,  'reviews': review})
+        # for img in turflist.turfimages_set.all:
+        #     print("hello")
+        #     print(img)    
+        return render (request, "userpages/user_srchturf.html", {'user': userlog, 'turf': turflist, 'image':turfimages, 'reviews': review})
     else:
         return render (request, "adminpages/LoginUser.html")
     
@@ -30,11 +33,22 @@ def Searchlist(request):
         userid = request.session['userlog_id']
         userlog = Userlist.objects.get(id = userid)
         searchname = request.POST['search']
-        turflist = Managerlist.objects.filter(man_turfname__icontains=searchname, man_status = 'accepted').all().order_by('id')
+        turflist = Managerlist.objects.filter(man_turfname__icontains=searchname, man_status = 'accepted').order_by('id')
         if searchname == "":
             return redirect('user:usearchturf')
         else:
             return render (request, "userpages/user_searchlist.html", {'user': userlog, 'turf1': turflist})
+    else:
+        return render (request, "adminpages/LoginUser.html")    
+    
+def Usersearchdetail(request,turfid):
+    if 'userlog_id' in request.session:
+        userid = request.session['userlog_id']
+        userlog = Userlist.objects.get(id = userid)
+        turflist = Managerlist.objects.get(id = turfid)
+        turfimages = Turfimages.objects.filter(manager_id = turfid)    
+        review = Turfreview.objects.filter(m_id_id = turfid)
+        return render (request, "userpages/user_searchdetail.html", {'user': userlog, 'turf': turflist, 'image':turfimages, 'reviews': review})
     else:
         return render (request, "adminpages/LoginUser.html")    
     
@@ -48,7 +62,7 @@ def Userreview(request,turfid):
             name = request.POST['revname']
             contact = request.POST['revcontact']
             message = request.POST['revmessage']
-            us_review = Turfreview(u_id = userid, m_id = turf.id, r_name = name, r_contact = contact, r_message = message)
+            us_review = Turfreview(u_id_id = userid, m_id_id = turf.id, r_name = name, r_contact = contact, r_message = message)
             us_review.save()
             if us_review:
                 rmessage = "Thanks for your valuable feedback"

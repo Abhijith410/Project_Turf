@@ -102,8 +102,8 @@ def Adminturfs(request):
 def Adminviewimages(request,turfid):
     if 'adlog_id' in request.session:
         turf_data = Managerlist.objects.get(id = turfid)
-        images = Turfimages.objects.filter(m_id = turfid)
-        return render (request, "adminpages/admin_turf.html", {'t_data':turf_data, 'image': images})
+        images = Turfimages.objects.filter(manager_id = turfid)
+        return render (request, "adminpages/admin_turfdetails.html", {'t_data':turf_data, 'image': images})
     else:
         return render (request, "adminpages/admin_login.html")   
 

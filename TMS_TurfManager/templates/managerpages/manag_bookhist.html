@@ -52,8 +52,8 @@
               <th scope="row">{{book.id}}</th>
               <td>{{book.b_name}}</td>
               <td>{{book.b_contact}}</td>
-              <td>{{book.b_date}}</td>
-              <td>{{book.b_tst}} - {{book.b_tend}}</td>
+              <td>{{book.b_date|date:'d/m/Y'}}</td>
+              <td>{{book.b_tst|time:"g:i A"}} - {{book.b_tend|time:"g:i A"}}</td>
               <td>{{book.b_tcost}}</td>
               <td>{{book.b_status}}</td>
               <td>{{book.b_pstatus}}</td>

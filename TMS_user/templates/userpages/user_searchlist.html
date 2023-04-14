@@ -57,7 +57,8 @@
             <h4 class="card-title">{{turf_.man_turfname}} Turf</h4>
             <p class="card-text">Location: {{turf_.man_turfloc}} </p> <br>
             <a href="{% url 'user:uconfirmturf' turf_.id %}"><button type="button" class="btn btn book">Book Now</button></a>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t1{{turf_.pk}}"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t1{{turf_.pk}}"><i class="fa-sharp fa-solid fa-circle-info"></i></button> -->
+            <a href="{% url 'user:usearchdetail' turf_.id %}"><button type="button" class="btn btn-primary"><i class="fa-sharp fa-solid fa-circle-info"></i></button></a>
             <a href="{% url 'user:ureview' turf_.id %}"><button type="button" class="btn btn book">Review</button></a>
               <div class="modal fade" id="t1{{turf_.pk}}" tabindex="-1" role="dialog" aria-labelledby="t1{{turf_.pk}}-label" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">

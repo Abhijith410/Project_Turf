@@ -52,8 +52,8 @@
               <td>{{book.b_name}}</td>
               <td>{{book.b_contact}}</td>
               <td>{{book.b_turf}}</td>
-              <td>{{book.b_date}}</td>
-              <td>{{book.b_tst}} - {{book.b_tend}}</td>
+              <td>{{book.b_date|date:'d/m/Y'}}</td>
+              <td>{{book.b_tst|time:"g:i A"}} - {{book.b_tend|time:"g:i A"}}</td>
               <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#b{{book.pk}}"><i class="fas fa-circle-check"> Accept</i></button>
                 <a href="{% url 'manager:mcancelbook' %}"><button type="button" class="btn btn-secondary"><i class="fa-sharp fa-solid fa-times-circle"> Cancel</i></button></a>
               </td>
@@ -67,11 +67,11 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                        {{book.b_name}} ; {{book.b_turf}} ; {{book.b_date}} ; {{book.b_tst}} - {{book.b_tend}}
+                        {{book.b_name}} ; {{book.b_turf}} ; {{book.b_date|date:'d/m/Y'}} ; {{book.b_tst|time:"g:i A"}} - {{book.b_tend|time:"g:i A"}}
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success">Generate Bill</button>
+                        <a href="{% url 'manager:macceptbook' %}"><button type="button" class="btn btn-success">Generate Bill</button></a>
                       </div>
                     </div>
                   </div>

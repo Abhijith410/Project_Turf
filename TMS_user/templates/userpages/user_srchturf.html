@@ -53,33 +53,13 @@
       {% for turf_ in turf %}
       <div class="col mb-4">
         <div class="card">
-          <!-- <img src="{{image.images.url}}" class="card-img-top" alt="..."> -->
-          <div class="modal-body">
-          {% for img in turf_.turfimages_set.all %}
-          <div id="carouselExampleControls2" class="carousel slide" data-ride="carousel"></div>
-            
-            <div class="carousel-inner">
-              <div class="carousel-item {% if forloop.first %} active {% endif %}">
-                <img src="{{img.images.url}}" class="d-block w-100" alt="..." style="width: 100%; height: 400px;">
-              </div>
-              
-            </div>
-            <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls2" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-target="#carouselExampleControls2" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </button>
-          </div>  
-          {% endfor %}
-          </div>
+          <img src="{{turf_.turfimages_set.first.picture }}" class="card-img-top" alt="...">
           <div class="card-body">
             <h4 class="card-title">{{turf_.man_turfname}} Turf</h4>
             <p class="card-text">Location: {{turf_.man_turfloc}} </p> <br>
             <a href="{% url 'user:uconfirmturf' turf_.id %}"><button type="button" class="btn btn book">Book Now</button></a>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t1{{turf_.pk}}"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
+            <!-- <a href="{% url 'user:usearchdetail' turf_.id %}"><button type="button" class="btn btn-primary"><i class="fa-sharp fa-solid fa-circle-info"></i></button></a> -->
             <a href="{% url 'user:ureview' turf_.id %}"><button type="button" class="btn btn book">Review</button></a>
               <div class="modal fade" id="t1{{turf_.pk}}" tabindex="-1" role="dialog" aria-labelledby="t1{{turf_.pk}}-label" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -92,10 +72,11 @@
                     </div>
                     <div class="modal-body">
                       <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                          {% for image in imageturf %}
+                        <div class="carousel-inner" role="listbox">
+                          {% for images in turf.turfimages_set.all %}
+                          asfghjkjhk
                           <div class="carousel-item {% if forloop.first %} active {% endif %}">
-                            <img src="{{image.images.url}}" class="d-block w-100" alt="..." style="width: 100%; height: 400px;">
+                            <img src="{{image.all.images.url}}" class="d-block w-100" alt="..." style="width: 100%; height: 400px;">
                           </div>
                           {% endfor %}
                         </div>
