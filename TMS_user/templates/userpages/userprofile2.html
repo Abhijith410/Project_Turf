@@ -17,7 +17,7 @@
   <header>
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg navbar-dark" style=" background-color: #0a0a0a">
-        <a class="navbar-brand" href="{% url 'appadmin:homepage' %}"><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
+        <a class="navbar-brand" href="{% url 'appadmin:homepage2' %}"><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
       </nav>
     </div>
   </header>  
@@ -25,7 +25,7 @@
     <nav class="navbar navbar-light">
       <a class="navbar-brand">Hello {{usdata.user_name}}</a>
       <form class="form-inline">
-        <li><a href="{% url 'appadmin:homepage' %}">Home</a></li>
+        <li><a href="{% url 'appadmin:homepage2' %}">Home</a></li>
         <li><a href="{% url 'user:uhomepage' %}">Dashboard </a></li>
         <a href="{% url 'appadmin:userlogout' %}"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button></a>
       </form>
@@ -88,7 +88,7 @@
                 </div>
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                   <div class="form-group">
-                    <label for="website">Update Password</label>
+                    <label for="website">Password</label>
                     <input type="password" name="password1" value="{{usdata.user_password}}" class="form-control" id="unewpass" data-toggle="password" placeholder="Enter new password" >
                     <input type="checkbox" onclick="password()"> Show Password <br>
                     <span class="requesterror" id="usernewpass"></span>
@@ -128,13 +128,13 @@
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
               <h6 class="text-uppercase mb-4 font-weight-bold">Quick Links</h6>
               <p class="Footers">
-                <a class="text-white" href="">Home</a>
+                <a class="text-white" href="{% url 'appadmin:homepage2' %}">Home</a>
               </p>
               <p>
-                <a class="text-white">Login</a>
+                <a class="text-white" href="">Login</a>
               </p>
               <p>
-                <a class="text-white">Book Now</a>
+                <a class="text-white" href="{% url 'user:usearchturf' %}">Book Now</a>
               </p>
             </div>
             <hr class="w-100 clearfix d-md-none" />

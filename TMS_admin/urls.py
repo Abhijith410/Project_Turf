@@ -4,6 +4,7 @@ app_name = 'appadmin'
 
 urlpatterns = [
     path('Amalgamation/', views.Homepage, name = "homepage"),
+    path('Amalgamation1/', views.Homepage2, name = "homepage2"),
     path('LoginUser/', views.Loginuser, name = "loginuser"),
     path('LoginManager/', views.Loginmanager, name = "loginmanager"),
     path('UserLogout/', views.Userlogout, name= "userlogout"),

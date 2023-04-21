@@ -15,7 +15,7 @@
   <header>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark" style=" background-color: #0a0a0a">
-          <a class="navbar-brand" href="{% url 'appadmin:homepage' %}"><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
+          <a class="navbar-brand" href="{% url 'appadmin:homepage2' %}"><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
         </nav>
     </div>
   </header>  
@@ -23,7 +23,7 @@
     <nav class="navbar navbar-light">
       <a class="navbar-brand">Hello {{manager_data.man_name}}</a>
       <form class="form-inline">
-        <li><a href="{% url 'appadmin:homepage' %}">Home</a></li>
+        <li><a href="{% url 'appadmin:homepage2' %}">Home</a></li>
         <li><a href="{% url 'manager:mhomepage' %}">Dashboard </a></li>
         <a href="{% url 'appadmin:managerlogout' %}"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button></a>
       </form>
@@ -33,7 +33,7 @@
     <div class="row">
       <div class="col-md-12 manager_home">
         <ul>
-          <li><a href="{% url 'appadmin:homepage' %}">Home</a></li>
+          <li><a href="{% url 'appadmin:homepage2' %}">Home</a></li>
           <li><a href="{% url 'manager:mturf' %}">My Turf</a></li>
           <li><a href="{% url 'manager:mbookconfirm' %}">Confirm Bookings</a></li>
           <li><a href="{% url 'manager:mbookhistory' %}">Booking History</a></li>
@@ -63,7 +63,7 @@
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
               <h6 class="text-uppercase mb-4 font-weight-bold">Quick Links</h6>
               <p class="Footers">
-                <a class="text-white" href="">Home</a>
+                <a class="text-white" href="{% url 'appadmin:homepage2' %}">Home</a>
               </p>
               <p>
                 <a class="text-white">Login</a>

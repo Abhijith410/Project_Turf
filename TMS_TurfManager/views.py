@@ -54,7 +54,7 @@ def Manageraccept(request):
     if 'managerlog_id' in request.session:
         id = request.session['managerlog_id']
         status = 'Confirmed'
-        payment = 'NA'
+        payment = 'Pending'
         Bookings.objects.filter(mn_id_id = id).update(b_status = status, b_pstatus = payment)
         return redirect ('manager:mbookhistory')
     else:

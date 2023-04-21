@@ -16,7 +16,7 @@
   <header>
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg navbar-dark" style=" background-color: #0a0a0a">
-        <a class="navbar-brand" href="{% url 'appadmin:homepage' %}"><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
+        <a class="navbar-brand" href="{% url 'appadmin:homepage2' %}"><img src="{% static '/images/amalgamation_logo.jpg' %}" alt="" width="30" height="40"><b> Amalgamation</b></a>
       </nav>
     </div>
   </header>  
@@ -24,7 +24,7 @@
     <nav class="navbar navbar-light">
       <a class="navbar-brand">Hello {{user.user_name}}</a>
       <form class="form-inline">
-        <li><a href="{% url 'appadmin:homepage' %}">Home</a></li>
+        <li><a href="{% url 'appadmin:homepage2' %}">Home</a></li>
         <li><a href="{% url 'user:uhomepage' %}">Dashboard </a></li>
         <a href="{% url 'appadmin:userlogout' %}"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button></a>
       </form>
@@ -32,15 +32,17 @@
   </div>
   <div class="container-fluid turfdetails">
     <div class="container col-lg-6 col-md-6 col-sm-12 p-0 searchbar">
-      <div class=" locationsearch">
-        <label for=""><b>Search by Location: </b></label>
-        <select name="turfs" id="locations"><br>
-          <option value="default">--Select--</option>
-          {% for turf_ in turf %}
-          <option value="{{turf_.id}}">{{turf_.man_turfloc}}</option>
-          {% endfor %}
-        </select>
-      </div>
+      <form action="" method="post">
+        <div class=" locationsearch">
+          <label for=""><b>Search by Location: </b></label>
+          <select name="turfs" id="locations"><br>
+            <option value="default">--Select--</option>
+            {% for turf_ in turf %}
+            <option value="{{turf_.id}}">{{turf_.man_turfloc}}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </form>
       <form autocomplete="on" action="{% url 'user:usearchlist' %}" method="post">
         {% csrf_token %}
         <input type="search" name="search" class="search" id="form1" name="search">
@@ -58,8 +60,8 @@
             <h4 class="card-title">{{turf_.man_turfname}} Turf</h4>
             <p class="card-text">Location: {{turf_.man_turfloc}} </p> <br>
             <a href="{% url 'user:uconfirmturf' turf_.id %}"><button type="button" class="btn btn book">Book Now</button></a>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t1{{turf_.pk}}"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
-            <!-- <a href="{% url 'user:usearchdetail' turf_.id %}"><button type="button" class="btn btn-primary"><i class="fa-sharp fa-solid fa-circle-info"></i></button></a> -->
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#t1{{turf_.pk}}"><i class="fa-sharp fa-solid fa-circle-info"></i></button> -->
+            <a href="{% url 'user:usearchdetail' turf_.id %}"><button type="button" class="btn btn-primary"><i class="fa-sharp fa-solid fa-circle-info"></i></button></a>
             <a href="{% url 'user:ureview' turf_.id %}"><button type="button" class="btn btn book">Review</button></a>
               <div class="modal fade" id="t1{{turf_.pk}}" tabindex="-1" role="dialog" aria-labelledby="t1{{turf_.pk}}-label" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -133,13 +135,13 @@
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
               <h6 class="text-uppercase mb-4 font-weight-bold">Quick Links</h6>
               <p class="Footers">
-                <a class="text-white" href="">Home</a>
+                <a class="text-white" href="{% url 'appadmin:homepage2' %}">Home</a>
               </p>
               <p>
-                <a class="text-white">Login</a>
+                <a class="text-white" href="">Login</a>
               </p>
               <p>
-                <a class="text-white">Book Now</a>
+                <a class="text-white" href="{% url 'user:usearchturf' %}">Book Now</a>
               </p>
             </div>
             <hr class="w-100 clearfix d-md-none" />

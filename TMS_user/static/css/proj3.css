@@ -1567,3 +1567,8 @@ form .ratebutton2 button:hover, form .ratebutton3 button:hover{
 .review label{
   font-weight: 700;
 }
+
+.review p{
+  font-weight: 600;
+  color: #d004d7;
+}

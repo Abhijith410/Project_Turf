@@ -8,6 +8,9 @@ from TMS_TurfManager.views import *
 def Homepage(request):
     return render (request, "adminpages/home.html")
 
+def Homepage2(request):
+    return render (request, "adminpages/home2.html")
+
 def AdminLogin(request):
     if request.method == "POST":
         adminname = request.POST['adname']
@@ -102,8 +105,8 @@ def Adminturfs(request):
 def Adminviewimages(request,turfid):
     if 'adlog_id' in request.session:
         turf_data = Managerlist.objects.get(id = turfid)
-        images = Turfimages.objects.filter(manager_id = turfid)
-        return render (request, "adminpages/admin_turfdetails.html", {'t_data':turf_data, 'image': images})
+        turfimages = Turfimages.objects.filter(manager_id = turfid)
+        return render (request, "adminpages/admin_turfdetails.html", {'t_data':turf_data, 'image': turfimages})
     else:
         return render (request, "adminpages/admin_login.html")   
 
@@ -145,6 +148,7 @@ def Loginuser(request):
 
 def Userlogout(request):
     del request.session['userlog_id']
+    # return render (request, "adminpages/LoginUser.html", {'logout':'You have successfully logged out.'})
     return redirect ('appadmin:loginuser')
 
 def Loginmanager(request):
@@ -164,6 +168,7 @@ def Loginmanager(request):
 
 def Managerlogout(request):
     del request.session['managerlog_id']
+    # return render (request, "adminpages/LoginManager.html", {'logout':'You have successfully logged out.'})
     return redirect ('appadmin:loginmanager')
 
 def Turfrequest(request):

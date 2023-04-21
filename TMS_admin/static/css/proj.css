@@ -16,6 +16,8 @@ header{
   background-color: #5691ff;
 }
 
+
+
 .login2 .form1{
   background-color: #fff;
   max-width: 600px;
@@ -28,9 +30,21 @@ header{
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
 }
 
-/* .login2 input{
-  width: 400px;
-} */
+.dashboard button{
+  float: left;
+  margin: 20px;
+  color: rgb(0, 0, 0);
+  background-color: #0ee40a;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 2px solid;
+}
+
+.dashboard button:hover{
+  background-color: #0a0aec;
+  text-decoration: none;
+  color: white;
+}
 
 .login2 .heading1{
   text-align: center;
